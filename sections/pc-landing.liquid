@@ -1,0 +1,1175 @@
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap">
+<style>
+
+/* ═══════════ RESET ═══════════ */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
+img,svg{display:block;max-width:100%}
+button{font:inherit;color:inherit;cursor:pointer;border:0;background:none}
+a{color:inherit;text-decoration:none}
+ul{list-style:none}
+
+/* ═══════════ TOKENS — dark masculine, persimmon-bronze ═══════════ */
+:root{
+  --bg-0:#161210;        /* page base — deep espresso */
+  --bg-1:#1e1815;        /* raised panels */
+  --bg-2:#100c0a;        /* deepest bands */
+  --bg-bronze:#2a1c12;   /* bronze-tinted band */
+  --ink:#f4ece3;         /* primary text — warm white */
+  --ink-soft:#c9bcae;    /* secondary */
+  --ink-faint:#9a8b7c;   /* tertiary */
+  --bronze:#c15a12;      /* accent — persimmon-bronze (ref #B0510E family) */
+  --bronze-lt:#e07a2a;   /* bright accent */
+  --bronze-deep:#a24a0d; /* CTA base */
+  --bronze-press:#8a3f0b;
+  --sage:#8fae7d;        /* green-tea cue */
+  --charco:#7f95a3;      /* charcoal / front 3 cue */
+  --line:rgba(244,236,227,.12);
+  --line-soft:rgba(244,236,227,.07);
+  --ok:#8fae7d;
+
+  --font-display:'Sora',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
+  --font-body:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
+
+  --t-xs:clamp(.72rem, .69rem + .14vw, .8rem);
+  --t-sm:clamp(.84rem, .81rem + .16vw, .92rem);
+  --t-base:clamp(1rem, .965rem + .2vw, 1.1rem);
+  --t-lg:clamp(1.12rem, 1.05rem + .32vw, 1.28rem);
+  --t-xl:clamp(1.3rem, 1.15rem + .6vw, 1.6rem);
+  --t-2xl:clamp(1.5rem, 1.25rem + 1.1vw, 2.05rem);
+  --t-3xl:clamp(1.9rem, 1.45rem + 2vw, 3rem);
+  --t-hero:clamp(2.25rem, 1.55rem + 3.4vw, 4.1rem);
+
+  --maxw:1160px; --maxw-prose:60ch;
+  --r-sm:.5rem; --r-md:.9rem; --r-lg:1.35rem; --r-xl:1.9rem; --r-full:9999px;
+  --sh-md:0 10px 30px rgba(0,0,0,.45);
+  --sh-lg:0 26px 60px rgba(0,0,0,.55);
+  --sh-bronze:0 14px 34px rgba(193,90,18,.36);
+  --ease:cubic-bezier(.16,1,.3,1); --dur:.28s;
+  interpolate-size:allow-keywords;
+}
+
+/* ═══════════ BASE ═══════════ */
+html,body{overflow-x:clip}
+body{
+  font-family:var(--font-body);
+  font-size:var(--t-base);
+  line-height:1.65;
+  color:var(--ink);
+  background:var(--bg-0);
+  -webkit-font-smoothing:antialiased;
+  text-rendering:optimizeLegibility;
+  padding-bottom:5rem; /* sticky mobile CTA room */
+}
+h1,h2,h3,h4{font-family:var(--font-display);font-weight:700;line-height:1.08;letter-spacing:-.02em;text-wrap:balance}
+p{text-wrap:pretty}
+strong,b{font-weight:700;color:#fff}
+em{font-style:italic;color:var(--ink)}
+.wrap{width:min(100% - 2.2rem,var(--maxw));margin-inline:auto}
+.narrow{max-width:56rem;margin-inline:auto}
+section{padding-block:clamp(3.2rem,7vw,6rem)}
+.eyebrow{font:700 var(--t-xs)/1 var(--font-body);letter-spacing:.18em;text-transform:uppercase;color:var(--bronze-lt)}
+:focus-visible{outline:2.5px solid var(--bronze-lt);outline-offset:3px;border-radius:var(--r-sm)}
+.skip{position:absolute;left:1rem;top:-3rem;background:var(--bronze-deep);color:#fff;padding:.55rem 1rem;border-radius:var(--r-sm);z-index:1200;transition:top var(--dur) var(--ease)}
+.skip:focus{top:.6rem}
+.stars{color:var(--bronze-lt);letter-spacing:.12em;font-size:1rem}
+
+/* ═══════════ MEDIA (owned images) ═══════════ */
+.media{position:relative;width:100%;aspect-ratio:var(--ar,1/1);border-radius:var(--r-lg);overflow:hidden;background:var(--bg-1);box-shadow:var(--sh-lg);isolation:isolate}
+.media img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.lp-fig{width:min(100%,26rem);margin:clamp(1.8rem,4vw,2.4rem) auto 0}
+.lp-fig .media{--ar:4/5}
+.lp-fig--diagram{width:min(100%,30rem)}
+.lp-fig--diagram .media{--ar:1/1}
+/* ═══════════ BUTTONS ═══════════ */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:.55rem;min-height:58px;padding:1rem 2rem;border-radius:var(--r-full);
+  font:700 var(--t-lg)/1 var(--font-display);letter-spacing:.02em;text-transform:uppercase;text-align:center;
+  transition:transform var(--dur) var(--ease),box-shadow var(--dur) var(--ease),background var(--dur) var(--ease)}
+.btn--primary{background:linear-gradient(180deg,var(--bronze-lt),var(--bronze-deep));color:#fff;box-shadow:var(--sh-bronze)}
+.btn--primary:hover{transform:translateY(-2px);box-shadow:0 20px 44px rgba(193,90,18,.5)}
+.btn--primary:active{transform:translateY(0) scale(.99)}
+.btn--block{display:flex;width:100%}
+.btn__ar{transition:transform var(--dur) var(--ease)}
+.btn--primary:hover .btn__ar{transform:translateX(4px)}
+.cta-micro{display:flex;align-items:center;gap:.5rem;justify-content:center;font-size:var(--t-sm);color:var(--ink-soft);margin-top:.9rem;text-wrap:pretty}
+.cta-micro svg{flex:none;color:var(--ok)}
+
+/* ═══════════ STICKY PROMO BAR (honest launch note — no countdown) ═══════════ */
+.promobar{position:sticky;top:0;z-index:1000;background:var(--bg-2);border-bottom:1px solid var(--line);
+  display:flex;align-items:center;justify-content:center;gap:.7rem 1.4rem;flex-wrap:wrap;
+  padding:.6rem 1rem;text-align:center;font-size:var(--t-xs);letter-spacing:.04em}
+.promobar strong{color:var(--bronze-lt);text-transform:uppercase;letter-spacing:.1em}
+.promobar .dot{color:var(--ink-faint)}
+.promobar__note{color:var(--ink-soft)}
+
+/* ═══════════ HERO ═══════════ */
+.hero{position:relative;overflow:hidden;background:
+  radial-gradient(120% 90% at 82% 8%,rgba(193,90,18,.28),transparent 46%),
+  radial-gradient(90% 80% at 0% 100%,rgba(42,28,18,.9),transparent 60%),
+  linear-gradient(160deg,#1c1512,#0f0b09 70%)}
+.hero::after{content:"";position:absolute;inset:0;background:linear-gradient(115deg,transparent 40%,rgba(193,90,18,.10) 55%,transparent 68%);pointer-events:none}
+.hero__grid{display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(1.5rem,4vw,3.5rem);align-items:center;padding-block:clamp(2.4rem,5vw,4.2rem)}
+.hero__eyebrow{display:flex;align-items:center;gap:.6rem;flex-wrap:wrap;margin-bottom:1.15rem}
+.hero h1{font-size:var(--t-hero);color:#fff;margin-bottom:1.15rem}
+.hero h1 .hl{color:var(--bronze-lt)}
+.hero__lead{font-size:var(--t-lg);color:var(--ink-soft);max-width:40ch;margin-bottom:1.6rem}
+.hero__cta{max-width:26rem}
+.hero__figure{position:relative}
+.hero__figure .media{--ar:4/5;box-shadow:0 40px 80px rgba(0,0,0,.6)}
+.hero__badge{position:absolute;right:-.4rem;bottom:1.2rem;z-index:4;width:clamp(84px,10vw,116px);height:clamp(84px,10vw,116px);border-radius:var(--r-full);
+  background:radial-gradient(circle at 50% 40%,var(--bronze-lt),var(--bronze-deep));color:#fff;display:grid;place-content:center;text-align:center;
+  font:800 .62rem/1.15 var(--font-display);letter-spacing:.04em;text-transform:uppercase;box-shadow:var(--sh-bronze);border:2px solid rgba(255,255,255,.14);padding:.4rem}
+.hero__badge b{font-size:1.35rem;display:block}
+/* press strip */
+.pressstrip{margin-top:clamp(1.6rem,4vw,2.4rem);border-top:1px solid var(--line);padding-top:1.5rem;
+  display:grid;grid-template-columns:repeat(4,1fr);gap:1rem 1.4rem}
+.pressstrip li{display:flex;gap:.6rem;font-size:var(--t-sm);color:var(--ink-soft);line-height:1.4}
+.pressstrip svg{flex:none;color:var(--bronze-lt);margin-top:.15rem}
+
+/* ═══════════ BENEFIT STRIP (3 frentes) ═══════════ */
+.benefitstrip{background:var(--bg-bronze);border-block:1px solid var(--line)}
+.benefitstrip .row{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:.9rem clamp(1.5rem,5vw,3.5rem);padding-block:1.35rem}
+.benefitstrip .item{display:flex;align-items:center;gap:.6rem;font:700 var(--t-sm)/1 var(--font-display);letter-spacing:.12em;text-transform:uppercase;color:#fff}
+.benefitstrip .n{color:var(--bronze-lt);font-size:1.1rem}
+.benefitstrip .sep{color:var(--ink-faint);display:none}
+
+/* ═══════════ TRANSITION CLAIM ═══════════ */
+.claimband{background:var(--bg-2);text-align:center}
+.claimband h2{font-size:var(--t-3xl);color:#fff;max-width:20ch;margin-inline:auto}
+.claimband .accent{color:var(--bronze-lt)}
+
+/* ═══════════ MECHANISM (3 frentes blocks) ═══════════ */
+.mech{background:linear-gradient(180deg,var(--bg-0),var(--bg-1))}
+.mech__head{text-align:center;max-width:44rem;margin:0 auto clamp(2.4rem,5vw,3.6rem)}
+.mech__head h2{font-size:var(--t-2xl);color:#fff;letter-spacing:.02em;text-transform:uppercase;margin-bottom:1rem}
+.mech__head p{color:var(--ink-soft);font-size:var(--t-lg)}
+.mech__block{margin-bottom:clamp(.9rem,2vw,1.3rem)}
+.mech__block:last-of-type{margin-bottom:0}
+.mech__body{display:grid;grid-template-columns:448px 1fr;gap:clamp(1.5rem,4vw,3.4rem);align-items:center;padding:.4rem 1.25rem 1.5rem}
+.mech__block--flip .mech__body .mech__media{order:2}
+.mech__media .media{--ar:1/1;max-width:448px;margin-inline:auto}
+.mech__num{display:inline-flex;align-items:center;justify-content:center;width:2.6rem;height:2.6rem;border-radius:var(--r-full);flex:none;
+  background:rgba(193,90,18,.16);border:1px solid rgba(224,122,42,.4);color:var(--bronze-lt);font:800 1.15rem/1 var(--font-display);margin-bottom:1rem}
+.mech__block h3{font-size:var(--t-xl);color:#fff;margin-bottom:1rem}
+.mech__block>summary{padding:1.15rem 1.25rem}
+.mech__block>summary .mech__num{margin-bottom:0;width:2.2rem;height:2.2rem;font-size:1rem}
+.mech__block>summary h3{font-size:var(--t-lg);margin-bottom:0;line-height:1.25;text-align:left}
+.mech__block p{color:var(--ink-soft);max-width:46ch}
+.mech__cite{display:block;margin-top:1rem;font-size:var(--t-xs);color:var(--ink-faint);font-style:italic;line-height:1.5}
+.badge-proof{display:inline-flex;align-items:center;gap:.45rem;margin-bottom:.9rem;font:700 var(--t-xs)/1 var(--font-body);letter-spacing:.06em;text-transform:uppercase;color:var(--ok);background:rgba(143,174,125,.12);border:1px solid rgba(143,174,125,.32);padding:.4rem .7rem;border-radius:var(--r-full)}
+.mech__equalizer{max-width:44rem;margin:clamp(2rem,4vw,3rem) auto 0;text-align:center;color:var(--ink-soft);font-size:var(--t-base);border-top:1px solid var(--line);padding-top:1.6rem}
+
+/* ═══════════ CTA BAND ═══════════ */
+.ctaband{background:var(--bg-bronze);border-block:1px solid var(--line);text-align:center}
+.ctaband h2{font-size:var(--t-2xl);color:#fff;margin-bottom:1.4rem}
+.ctaband .btn{margin-inline:auto}
+.ctaband--tight{padding-block:clamp(2.4rem,5vw,3.4rem)}
+
+/* return line */
+.returnline{background:var(--bg-2);text-align:center;padding-block:clamp(2rem,4vw,2.8rem)}
+.returnline p{font:700 var(--t-xl)/1.2 var(--font-display);text-transform:uppercase;letter-spacing:.04em;color:#fff}
+.returnline .accent{color:var(--bronze-lt)}
+
+/* ═══════════ TIMELINE (compliant reframe) ═══════════ */
+.timeline{background:linear-gradient(180deg,var(--bg-1),var(--bg-0))}
+.timeline__head{text-align:center;max-width:46rem;margin:0 auto clamp(2.4rem,5vw,3.4rem)}
+.timeline__head h2{font-size:var(--t-3xl);color:#fff;margin-bottom:1rem}
+.timeline__head p{color:var(--ink-soft);font-size:var(--t-lg)}
+.timeline__stages{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(1rem,2.5vw,1.8rem)}
+.stage{background:var(--bg-1);border:1px solid var(--line);border-radius:var(--r-lg);padding:0;position:relative}
+.stage>summary{padding:1.15rem 1.35rem}
+.stage__body{padding:.1rem 1.35rem 1.25rem}
+.stage__label{font:800 var(--t-sm)/1.3 var(--font-display);letter-spacing:.1em;text-transform:uppercase;color:var(--bronze-lt);margin-bottom:0;display:flex;align-items:center;gap:.6rem;text-align:left}
+.stage__label::before{content:"";width:.7rem;height:.7rem;border-radius:var(--r-full);background:var(--bronze-lt);box-shadow:0 0 0 4px rgba(193,90,18,.2)}
+.stage__item{padding-block:.95rem;border-top:1px solid var(--line-soft)}
+.stage__item:first-of-type{border-top:0;padding-top:0}
+.stage__item h4{font-size:var(--t-base);color:#fff;margin-bottom:.3rem;font-family:var(--font-display);font-weight:600}
+.stage__item p{font-size:var(--t-sm);color:var(--ink-faint);line-height:1.5}
+.timeline__foot{text-align:center;color:var(--ink-faint);font-size:var(--t-sm);margin-top:1.8rem;font-style:italic}
+
+/* ═══════════ PROOF / REVIEWS — real testimonials (primer lote) ═══════════ */
+.proof{background:var(--bg-2);text-align:center}
+.proof__quote{max-width:42rem;margin:0 auto clamp(2.4rem,5vw,3.4rem)}
+.proof__quote h2{font-size:var(--t-2xl);color:#fff;margin-bottom:1rem}
+.proof__quote p{color:var(--ink-soft)}
+.proof__foot{color:var(--ink-faint);font-size:var(--t-sm);margin-top:1.8rem;font-style:italic}
+.reviews{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem;text-align:left}
+.tcard{background:var(--bg-1);border:1px solid var(--line);border-radius:var(--r-md);padding:1.3rem 1.35rem;display:flex;flex-direction:column;gap:.8rem;min-width:0;text-align:left}
+.tcard blockquote{font-size:var(--t-sm);color:var(--ink);line-height:1.6;overflow-wrap:break-word;text-wrap:pretty}
+.tcard blockquote::before{content:"“";color:var(--bronze-lt)}
+.tcard blockquote::after{content:"”";color:var(--bronze-lt)}
+.tcard footer{margin-top:auto;padding-top:.8rem;border-top:1px solid var(--line-soft);font:600 var(--t-xs)/1.35 var(--font-body);letter-spacing:.06em;text-transform:uppercase;color:var(--ink-faint);display:flex;align-items:center;gap:.7rem}
+/* avatars (pseudonymized) */
+.tavatar{width:46px;height:46px;border-radius:var(--r-full);object-fit:cover;flex:none;border:1.5px solid rgba(224,122,42,.35);background:var(--bg-2)}
+.tavatar--lg{width:56px;height:56px}
+.tmeta{display:flex;flex-direction:column;gap:.18rem;min-width:0}
+.tname{color:var(--ink);font-weight:700;letter-spacing:.05em}
+.tdisclose{font-size:var(--t-xs);color:var(--ink-faint);text-align:center;font-style:italic;margin-top:1.1rem;line-height:1.55}
+/* testimonial sets (trios woven between sections) */
+.tset{background:var(--bg-0);padding-block:clamp(2.4rem,5vw,3.6rem)}
+.tset--deep{background:var(--bg-1)}
+.tset__eyebrow{text-align:center;margin-bottom:1.5rem;display:block}
+.tgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.1rem}
+/* quote strip under hero */
+.qstrip{background:var(--bg-2);border-bottom:1px solid var(--line);padding-block:clamp(1.8rem,4vw,2.6rem)}
+/* featured big testimonial */
+.tfeat{background:linear-gradient(180deg,var(--bg-bronze),var(--bg-2));border-block:1px solid var(--line);text-align:center}
+.tfeat__mark{font:800 4rem/.6 var(--font-display);color:var(--bronze-lt);display:block;margin-bottom:1.3rem}
+.tfeat blockquote{max-width:46rem;margin-inline:auto;font:600 var(--t-xl)/1.55 var(--font-display);color:#fff;letter-spacing:-.01em;text-wrap:pretty}
+.tfeat blockquote::before{content:"“"}
+.tfeat blockquote::after{content:"”"}
+.tfeat footer{margin-top:1.5rem;font:700 var(--t-xs)/1.3 var(--font-body);letter-spacing:.14em;text-transform:uppercase;color:var(--bronze-lt);display:flex;flex-direction:column;align-items:center;gap:.7rem}
+
+/* ═══════════ TESTIMONIAL CAROUSELS (scroll-snap, no library) ═══════════ */
+.tnav{display:flex;align-items:center;justify-content:center;gap:.9rem;margin-top:1.1rem}
+.tnav__btn{display:inline-flex;align-items:center;justify-content:center;width:2.5rem;height:2.5rem;border-radius:var(--r-full);border:1px solid var(--line);background:var(--bg-1);color:var(--bronze-lt);transition:border-color var(--dur) var(--ease),color var(--dur) var(--ease)}
+.tnav__btn:hover{border-color:var(--bronze-lt);color:#fff}
+.tnav__dots{display:flex;gap:.5rem}
+.tnav__dot{width:.55rem;height:.55rem;border-radius:var(--r-full);background:rgba(244,236,227,.22);padding:0;transition:background var(--dur) var(--ease),transform var(--dur) var(--ease)}
+.tnav__dot[aria-current="true"]{background:var(--bronze-lt);transform:scale(1.25)}
+@media (max-width:1023px){
+  .tcarousel{display:flex;gap:.9rem;overflow-x:auto;scroll-snap-type:x mandatory;scroll-padding-inline:1.1rem;padding:.2rem 1.1rem .5rem;margin-inline:-1.1rem;max-width:none;-webkit-overflow-scrolling:touch;scrollbar-width:none;overscroll-behavior-x:contain}
+  .tcarousel::-webkit-scrollbar{display:none}
+  .tcarousel>.tcard{flex:0 0 clamp(16rem,85vw,23rem);scroll-snap-align:center}
+}
+@media (min-width:1024px){.tnav{display:none}}
+
+/* ═══════════ ACCORDIONS (details/summary, amber chevron) ═══════════ */
+.acc{background:var(--bg-1);border:1px solid var(--line);border-radius:var(--r-md)}
+.acc>summary{cursor:pointer;list-style:none;display:flex;align-items:center;gap:.8rem;padding:1.05rem 1.2rem}
+.acc>summary::-webkit-details-marker{display:none}
+.acc__chev{margin-left:auto;flex:none;color:var(--bronze-lt);transition:transform var(--dur) var(--ease)}
+.acc[open]>summary .acc__chev{transform:rotate(180deg)}
+.acc::details-content{block-size:0;overflow:clip;transition:block-size .32s var(--ease),content-visibility .32s allow-discrete}
+.acc[open]::details-content{block-size:auto}
+@media (min-width:1024px){
+  .acc--auto.is-static>summary{pointer-events:none}
+  .acc--auto.is-static .acc__chev{display:none}
+}
+
+/* ═══════════ VIDEO CLIPS ═══════════ */
+.vid-fig{width:min(100%,34rem);margin:clamp(1.6rem,4vw,2.2rem) auto 0}
+.vid-fig video{width:100%;height:auto;aspect-ratio:16/9;display:block;object-fit:cover;border-radius:var(--r-lg);background:var(--bg-1);box-shadow:var(--sh-lg)}
+.vid-fig figcaption{font-size:var(--t-xs);color:var(--ink-faint);text-align:center;margin-top:.7rem;font-style:italic;line-height:1.5}
+/* trust quotes at the offer */
+.offer__trust{margin-top:1.4rem;display:grid;grid-template-columns:1fr 1fr;gap:.9rem}
+/* hero proof link */
+.eyebrow--proof{color:var(--ink-soft);text-decoration:underline;text-underline-offset:.28em;text-decoration-color:var(--bronze)}
+.eyebrow--proof:hover{color:var(--bronze-lt)}
+
+/* ═══════════ EDUCATION ═══════════ */
+.edu{background:linear-gradient(180deg,var(--bg-0),var(--bg-1))}
+.edu__inner{max-width:46rem;margin-inline:auto}
+.edu h2{font-size:var(--t-3xl);color:#fff;margin-bottom:1.6rem;text-align:center}
+.edu h2 .accent{color:var(--bronze-lt)}
+.edu p{color:var(--ink-soft);margin-bottom:1.15rem;font-size:var(--t-lg)}
+.edu .note{font-size:var(--t-base);color:var(--ink-faint);font-style:italic;border-left:2px solid var(--bronze);padding-left:1.1rem}
+.edu ul.ledger{margin:1.4rem 0;display:grid;gap:.9rem}
+.edu ul.ledger li{display:flex;gap:.8rem;color:var(--ink-soft);font-size:var(--t-base)}
+.edu ul.ledger svg{flex:none;color:var(--bronze-lt);margin-top:.25rem}
+.edu .kicker{font-size:var(--t-xl);color:#fff;font-family:var(--font-display);font-weight:700;text-align:center;margin-top:2rem;letter-spacing:-.01em}
+
+/* ═══════════ OFFER ═══════════ */
+.offer{background:var(--bg-2)}
+.offer__head{text-align:center;max-width:44rem;margin:0 auto clamp(2rem,4vw,3rem)}
+.offer__head h2{font-size:var(--t-3xl);color:#fff;margin-bottom:1rem}
+.offer__head .frame{color:var(--ink-soft);font-size:var(--t-lg)}
+.offer__head .frame b{color:var(--bronze-lt)}
+.offer__grid{display:grid;grid-template-columns:.85fr 1.15fr;gap:clamp(1.5rem,4vw,3rem);align-items:start}
+.offer__figure .media{--ar:4/3}
+.offer__figcap{font-size:var(--t-xs);color:var(--ink-faint);text-align:center;margin-top:.8rem;font-style:italic;line-height:1.5}
+/* offer product gallery */
+.offer__figure{min-width:0}
+.offer__figure .media.gallery__main{--ar:1/1}
+.gallery__main img{transition:opacity .15s ease}
+.gallery__main img.is-fading{opacity:0}
+.gallery__thumbs{display:flex;gap:.6rem;margin-top:.9rem;padding:.2rem .2rem .5rem;max-width:100%;overflow-x:auto;overscroll-behavior-x:contain;-webkit-overflow-scrolling:touch;scrollbar-width:thin;scrollbar-color:var(--bronze) transparent}
+.gallery__thumb{flex:0 0 auto;width:78px;height:78px;border-radius:var(--r-md);overflow:hidden;border:2px solid var(--line);background:var(--bg-1);opacity:.65;transition:opacity var(--dur) var(--ease),border-color var(--dur) var(--ease)}
+.gallery__thumb img{width:100%;height:100%;aspect-ratio:1/1;object-fit:cover}
+.gallery__thumb:hover{opacity:1}
+.gallery__thumb[aria-current="true"]{border-color:var(--bronze-lt);opacity:1}
+@media (max-width:640px){.gallery__thumb{width:72px;height:72px}}
+.ladder{display:grid;gap:1rem}
+.tier{background:var(--bg-1);border:1px solid var(--line);border-radius:var(--r-lg);padding:1.3rem 1.4rem;display:grid;grid-template-columns:1fr auto;gap:.4rem 1rem;align-items:center}
+.tier--hero{border-color:var(--bronze);box-shadow:0 0 0 1px var(--bronze),var(--sh-md);position:relative}
+.tier--hero::before{content:"El favorito para empezar";position:absolute;top:-.75rem;left:1.3rem;background:var(--bronze-deep);color:#fff;font:700 .62rem/1 var(--font-body);letter-spacing:.08em;text-transform:uppercase;padding:.35rem .6rem;border-radius:var(--r-full)}
+.tier__name{font:700 var(--t-lg)/1.1 var(--font-display);color:#fff}
+.tier__meta{font-size:var(--t-sm);color:var(--ink-faint);grid-column:1}
+.tier__price{font:800 var(--t-xl)/1 var(--font-display);color:var(--bronze-lt);text-align:right}
+.tier__sub{font-size:var(--t-xs);color:var(--ink-faint);text-align:right;grid-column:2}
+.offer__addons{margin-top:1.2rem;display:grid;gap:.85rem}
+.addon{background:var(--bg-1);border:1px dashed var(--line);border-radius:var(--r-md);padding:1rem 1.15rem;font-size:var(--t-sm);color:var(--ink-soft)}
+.addon b{color:#fff}
+.offer__urgency{margin-top:1.3rem;background:rgba(193,90,18,.1);border:1px solid rgba(224,122,42,.3);border-radius:var(--r-md);padding:1rem 1.2rem;font-size:var(--t-sm);color:var(--ink-soft)}
+.offer__urgency b{color:var(--bronze-lt)}
+.ladder__cta{margin-top:1.3rem}
+
+/* ═══════════ GUARANTEE ═══════════ */
+.guarantee{background:linear-gradient(180deg,var(--bg-bronze),var(--bg-2));text-align:center}
+.guarantee__inner{max-width:40rem;margin-inline:auto}
+.guarantee .seal{width:clamp(66px,9vw,86px);height:clamp(66px,9vw,86px);border-radius:var(--r-full);margin:0 auto 1.4rem;
+  background:radial-gradient(circle at 50% 40%,var(--bronze-lt),var(--bronze-deep));display:grid;place-content:center;box-shadow:var(--sh-bronze);border:2px solid rgba(255,255,255,.16)}
+.guarantee h2{font-size:var(--t-3xl);color:#fff;text-transform:uppercase;letter-spacing:.02em;margin-bottom:1.2rem}
+.guarantee__hero{font-size:var(--t-lg);color:#fff;font-weight:600;margin-bottom:1.2rem}
+.guarantee__hero .accent{color:var(--bronze-lt)}
+.guarantee p.sub{color:var(--ink-soft);margin-bottom:1.6rem}
+.guarantee details{text-align:left;background:var(--bg-1);border:1px solid var(--line);border-radius:var(--r-md);margin-bottom:1.6rem}
+.guarantee summary{padding:1rem 1.2rem;font-weight:600;color:#fff;cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:1rem}
+.guarantee summary::-webkit-details-marker{display:none}
+.guarantee summary::after{content:"+";color:var(--bronze-lt);font-size:1.4rem;line-height:1}
+.guarantee details[open] summary::after{content:"–"}
+.guarantee details ul{padding:0 1.2rem 1.2rem;display:grid;gap:.7rem}
+.guarantee details li{display:flex;gap:.7rem;color:var(--ink-soft);font-size:var(--t-sm)}
+.guarantee details svg{flex:none;color:var(--ok);margin-top:.2rem}
+
+/* ═══════════ FAQ ═══════════ */
+.faq{background:var(--bg-0)}
+.faq h2{text-align:center;font-size:var(--t-2xl);color:#fff;margin-bottom:clamp(1.8rem,4vw,2.6rem)}
+.faq__list{max-width:44rem;margin-inline:auto;display:grid;gap:.8rem}
+.faq details{background:var(--bg-1);border:1px solid var(--line);border-radius:var(--r-md)}
+.faq summary{padding:1.1rem 1.3rem;font:600 var(--t-base)/1.4 var(--font-display);color:#fff;cursor:pointer;list-style:none;display:flex;justify-content:space-between;gap:1rem;align-items:center}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"+";color:var(--bronze-lt);font-size:1.4rem;flex:none;line-height:1}
+.faq details[open] summary::after{content:"–"}
+.faq details p{padding:0 1.3rem 1.2rem;color:var(--ink-soft);font-size:var(--t-sm)}
+
+/* ═══════════ EMAIL FOOTER ═══════════ */
+.footer{background:var(--bg-2);border-top:1px solid var(--line);text-align:center}
+.footer h2{font-size:var(--t-2xl);color:#fff;margin-bottom:.7rem}
+.footer p.sub{color:var(--ink-soft);margin-bottom:1.6rem;font-size:var(--t-sm)}
+.signup{display:flex;gap:.7rem;max-width:30rem;margin:0 auto 2rem;flex-wrap:wrap}
+.signup input{flex:1 1 12rem;min-height:52px;padding:.8rem 1.1rem;border-radius:var(--r-full);background:var(--bg-1);border:1px solid var(--line);color:var(--ink);font:inherit}
+.signup input::placeholder{color:var(--ink-faint)}
+.signup button{min-height:52px;padding:.8rem 1.6rem;border-radius:var(--r-full);background:var(--bronze-deep);color:#fff;font:700 var(--t-sm)/1 var(--font-display);letter-spacing:.06em;text-transform:uppercase}
+.footer__legal{border-top:1px solid var(--line-soft);padding-top:1.6rem;color:var(--ink-faint);font-size:var(--t-xs);max-width:52rem;margin-inline:auto;line-height:1.7}
+.footer__brand{font:800 1.3rem/1 var(--font-display);color:#fff;letter-spacing:.02em;margin-bottom:1rem;display:inline-block}
+
+/* ═══════════ STICKY MOBILE CTA ═══════════ */
+.mcta{position:fixed;left:0;right:0;bottom:0;z-index:1000;display:none;gap:.8rem;align-items:center;justify-content:space-between;
+  padding:.7rem 1rem;background:rgba(16,12,10,.92);backdrop-filter:blur(10px);border-top:1px solid var(--line)}
+.mcta__price{font:800 var(--t-base)/1 var(--font-display);color:#fff}
+.mcta__price span{display:block;font:500 var(--t-xs)/1.2 var(--font-body);color:var(--ink-faint);text-transform:none;letter-spacing:0;margin-top:.2rem}
+.mcta .btn{min-height:50px;padding:.7rem 1.3rem;font-size:var(--t-base);flex:none}
+
+/* ═══════════ RESPONSIVE ═══════════ */
+@media (max-width:1000px){
+  .mech__body{grid-template-columns:1fr;gap:1.4rem}
+  .mech__block--flip .mech__body .mech__media{order:0}
+  .mech__media .media{max-width:520px}
+  .offer__grid{grid-template-columns:1fr}
+  .offer__figure{width:min(100%,32rem);margin-inline:auto}
+}
+@media (max-width:860px){
+  .hero__grid{grid-template-columns:1fr;text-align:center}
+  .hero__eyebrow{justify-content:center}
+  .hero__lead{margin-inline:auto}
+  .hero__cta{margin-inline:auto}
+  .hero__figure{order:-1;width:min(100%,24rem);margin-inline:auto}
+  .pressstrip{grid-template-columns:repeat(2,1fr);text-align:left}
+  .timeline__stages{grid-template-columns:1fr;max-width:32rem;margin-inline:auto}
+}
+@media (max-width:640px){
+  .mcta{display:flex}
+  body{padding-bottom:5.4rem}
+  .benefitstrip .item{font-size:.72rem;letter-spacing:.08em}
+  .offer__trust{grid-template-columns:1fr}
+  .tier{grid-template-columns:1fr;text-align:left}
+  .tier__sub{grid-column:1}
+  .hero__figure{width:min(100%,13rem)}
+  .hero__figure .media{--ar:1/1}
+  .hero__grid{padding-block-start:1.5rem}
+  .tier__price,.tier__sub{text-align:left}
+  .pressstrip{grid-template-columns:1fr}
+  /* mobile height pass — tighter vertical rhythm, same copy */
+  section{padding-block:2.3rem}
+  .tset{padding-block:1.7rem}
+  .qstrip{padding-block:1.4rem}
+  .ctaband--tight{padding-block:1.8rem}
+  .returnline{padding-block:1.6rem}
+  .hero__grid{gap:1.2rem}
+  .pressstrip{margin-top:1.2rem;padding-top:1.1rem;gap:.65rem}
+  .mech__head{margin-bottom:1.6rem}
+  .timeline__head{margin-bottom:1.6rem}
+  .proof__quote{margin-bottom:1.5rem}
+  .offer__head{margin-bottom:1.4rem}
+  .edu p{margin-bottom:.9rem}
+  .edu .kicker{margin-top:1.3rem}
+  .lp-fig,.vid-fig{margin-top:1.3rem}
+  .guarantee p.sub{margin-bottom:1.2rem}
+  .mech__equalizer{margin-top:1.5rem;padding-top:1.2rem}
+  .timeline__foot{margin-top:1.2rem}
+}
+@media (prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;transition:none!important}}
+
+
+/* ═══ buy box (ported from listicle) ═══ */
+.buybox strong,.buybox b{color:inherit;font-weight:700}
+.buybox blockquote{font-style:normal}
+.buybox h2{letter-spacing:0}
+.buybox{background:#ffffff;padding:64px 0;color:#26211b}
+.bbwrap{max-width:1360px;margin:0 auto;padding:0 40px}
+.buybox-grid{display:grid;grid-template-columns:minmax(0,620px) minmax(0,640px);justify-content:space-between;gap:56px;align-items:start}
+.bb-main{aspect-ratio:1/0.86;background:#f5ecdd}
+.bb-main img{width:100%;height:100%;object-fit:cover;display:block}
+.bb-thumbs{display:flex;gap:10px;margin-top:10px}
+.bb-thumb{flex:1 1 0;aspect-ratio:1;padding:0;border:2px solid transparent;border-radius:6px;overflow:hidden;cursor:pointer;background:none}
+.bb-thumb img{width:100%;height:100%;object-fit:cover;display:block}
+.bb-thumb.is-active{border-color:#c1531a}
+.bb-thumb:focus-visible{outline:3px solid #e08a3c;outline-offset:2px}
+.bb-review{background:#f5ecdd;border-radius:10px;padding:18px 20px;margin-top:18px}
+.bb-review-head{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:8px;font-size:15px;color:#26211b}
+.bb-review-avatar{width:40px;height:40px;border-radius:50%;object-fit:cover;flex:0 0 auto}
+.bb-review-head .bb-verified{margin-left:auto}
+.bb-verified{color:#c1531a;font-weight:600;font-size:13px}
+.bb-review blockquote{font-size:15px;line-height:1.5;color:rgba(0,0,0,.8);margin:0;border:0;padding:0}
+.bb-eyebrow{font-size:14px;font-weight:600;color:#c1531a;letter-spacing:.03em;margin:0 0 8px}
+.bb-panel h2{font-size:34px;line-height:1.1;font-weight:800;color:#000;margin:0 0 14px}
+.bb-desc{font-size:17px;line-height:1.5;margin:0 0 22px;max-width:60ch;color:#26211b}
+.bb-divider{display:flex;align-items:center;gap:14px;font-weight:700;text-transform:uppercase;letter-spacing:.12em;font-size:15px;color:#26211b;margin:0 0 14px}
+.bb-divider::before,.bb-divider::after{content:"";flex:1;height:1px;background:rgba(0,0,0,.25)}
+.bb-tiers{display:flex;flex-direction:column;gap:12px;margin-bottom:14px}
+.bb-tier{position:relative;display:grid;grid-template-columns:auto auto 1fr auto;align-items:center;gap:12px;border:1.5px solid rgba(0,0,0,.18);border-radius:12px;padding:16px 18px;cursor:pointer;background:#fff}
+.bb-tier input{position:absolute;opacity:0}
+.bb-tier-img{width:56px;height:56px;object-fit:cover;border-radius:8px}
+.bb-radio{width:22px;height:22px;border-radius:50%;border:2px solid rgba(0,0,0,.3);display:inline-block;position:relative}
+.bb-tier input:checked ~ .bb-radio{border-color:#c1531a}
+.bb-tier input:checked ~ .bb-radio::after{content:"";position:absolute;inset:3px;border-radius:50%;background:#c1531a}
+.bb-tier:has(input:checked){border:2.5px solid #c1531a}
+.bb-tier-name{font-size:17px;color:#26211b}
+.bb-tier-name small{display:block;font-size:13px;color:rgba(0,0,0,.55);margin-top:2px}
+.bb-tier-price{font-size:20px;color:#26211b}
+.bb-tier-strip{grid-column:1/-1;background:#efe3cc;margin:10px -18px -16px;padding:10px 18px;border-radius:0 0 10px 10px;font-size:14px;font-weight:600}
+.bb-supply{display:inline-block;background:rgba(0,0,0,.07);border-radius:999px;padding:2px 10px;font-size:12px;font-weight:600;color:rgba(0,0,0,.6);vertical-align:1px;margin-left:6px;white-space:nowrap}
+.bb-pop--value{background:#26211b}
+.bb-pop{position:absolute;top:-11px;right:14px;background:#c1531a;color:#fff;font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;padding:3px 10px;border-radius:4px}
+.bb-subscribe{display:grid;grid-template-columns:auto 1fr;align-items:center;gap:12px;border:2px dashed #c1531a;border-radius:12px;padding:14px 18px;cursor:pointer;margin-bottom:14px;color:#26211b}
+.bb-subscribe input{position:absolute;opacity:0}
+.bb-check{width:22px;height:22px;border-radius:5px;border:2px solid #c1531a;display:inline-block;position:relative}
+.bb-subscribe input:checked ~ .bb-check::after{content:"✓";position:absolute;inset:0;display:flex;align-items:center;justify-content:center;color:#c1531a;font-weight:800;font-size:15px}
+.bb-subscribe span strong{display:block;font-size:16px}
+.bb-subscribe span small{display:block;font-size:13px;color:rgba(0,0,0,.55);margin-top:2px}
+.bb-pill{background:#f5ecdd;border-radius:999px;padding:12px 20px;font-size:14px;font-weight:600;margin:0 0 16px;color:#26211b}
+.bb-cta{width:100%;font-size:17px;min-height:56px;border-radius:10px;justify-content:center}
+.bb-note{text-align:center;font-size:14px;font-weight:600;margin:12px 0 14px;color:#26211b}
+.pay-badges{display:flex;gap:8px;flex-wrap:wrap}
+.bb-chips{justify-content:center}
+.pay-badge{width:54px;height:34px;background:#fff;border:1px solid rgba(0,0,0,.14);border-radius:6px;display:inline-flex;align-items:center;justify-content:center;overflow:hidden}
+.pay-badge svg{width:48px;height:30px;display:block}
+@media (max-width:1160px){.buybox-grid{gap:36px}}
+@media (max-width:880px){
+ .buybox{padding:40px 0}
+ .bbwrap{padding:0 18px}
+ .buybox-grid{grid-template-columns:minmax(0,1fr);gap:24px}
+ .bb-panel h2{font-size:26px}
+ .bb-desc{font-size:16px}
+ .bb-tier-name{font-size:16px}
+ .bb-tier-price{font-size:18px}
+ .bb-tier-img{width:46px;height:46px}
+}
+
+</style>
+
+<a class="skip" href="#main">Ir al contenido</a>
+
+<!-- ═══ STICKY PROMO BAR — honest launch note (no fake countdown) ═══ -->
+<div class="promobar" role="region" aria-label="Aviso de lanzamiento">
+  <strong>Precio de lanzamiento</strong>
+  <span class="dot" aria-hidden="true">·</span>
+  <span class="promobar__note">Solo los primeros 500 Dúos</span>
+  <span class="dot" aria-hidden="true">·</span>
+  <span class="promobar__note">Garantía 30 días</span>
+</div>
+
+<main id="main">
+
+<!-- ═══ HERO ═══ -->
+<header class="hero">
+  <div class="wrap hero__grid">
+    <div class="hero__copy">
+      <div class="hero__eyebrow">
+        <span class="eyebrow">Hecho para hombres 40+</span>
+        <span class="eyebrow">Garantía 30 días · Quédate la barra</span>
+        <a class="eyebrow eyebrow--proof" href="#opiniones">Opiniones reales de nuestro primer lote ↓</a>
+      </div>
+      <h1>Ese olor es tu <span class="hl">punto ciego</span>: tú no lo hueles. Los demás, sí.</h1>
+      <p class="hero__lead">Sales bañado en la mañana. A media tarde, el olor ya volvió. Tú no lo notas. La gente que se acerca, sí. Y no es mugre. Después de los 40, la piel cambia. Suelta un aceite distinto. El jabón normal no lo arrastra. Punto Ciego sí.</p>
+      <div class="hero__cta">
+        <a class="btn btn--primary btn--block" href="#oferta">Probar Punto Ciego sin riesgo <span class="btn__ar" aria-hidden="true">→</span></a>
+        <p class="cta-micro"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6 9 17l-5-5"/></svg> Garantía de 30 días. Si no te encanta, te devolvemos cada peso.</p>
+      </div>
+    </div>
+    <figure class="hero__figure">
+      <div class="media">
+        <img src="{{ 'pc-p-images-v2_hero-bar-front.jpg' | asset_url }}" alt="Barra de jabón Punto Ciego junto a su empaque." loading="eager" fetchpriority="high" width="2048" height="2048">
+      </div>
+      <div class="hero__badge" aria-hidden="true"><b>3</b>frentes<br>en 1 barra</div>
+    </figure>
+  </div>
+  <div class="wrap">
+    <ul class="pressstrip">
+      <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="14" r="7"/><path d="M12 7c0-2.5 1.5-4 4-4"/><path d="M8.5 6.5c1.5 0 3 .5 3.5 1.5"/></svg> Tanino de caqui: Japón lo usa desde hace siglos.</li>
+      <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 20C5 10 11 4 20 4c0 9-6 15-15 16Z"/><path d="M5 20c3-5 7-9 12-12"/></svg> Té verde: no tapa el olor, lo cambia.</li>
+      <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 3v6l-5.2 9.1A2 2 0 0 0 6.5 21h11a2 2 0 0 0 1.7-2.9L14 9V3"/><line x1="8" y1="3" x2="16" y2="3"/><line x1="7.5" y1="15" x2="16.5" y2="15"/></svg> Óxido de zinc: probado en un estudio con personas.</li>
+      <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2 4 6v6c0 5 3.4 8.5 8 10 4.6-1.5 8-5 8-10V6l-8-4Z"/><path d="m9 12 2 2 4-4"/></svg> Garantía de 30 días: te quedas la barra.</li>
+    </ul>
+  </div>
+</header>
+
+<!-- ═══ QUOTE STRIP — opiniones reales del primer lote ═══ -->
+<section class="qstrip" aria-label="Opiniones reales del primer lote">
+  <div class="wrap">
+    <div class="tgrid tcarousel" data-carousel>
+      <article class="tcard" data-t="19">
+        <blockquote>Un compañero del trabajo me preguntó hace unos días si había cambiado de loción. Me dio risa porque justo no estaba usando nada. Lo único nuevo era el jabón.</blockquote>
+        <footer><img class="tavatar" src="{{ 'pc-p-images-v2_avatars_t19.jpg' | asset_url }}" alt="" loading="lazy" width="46" height="46"><span class="tmeta"><span class="tname">Rubén</span><span>Comprador del primer lote</span></span></footer>
+      </article>
+      <article class="tcard" data-t="6">
+        <blockquote>Lo compré más por curiosidad que porque pensara que olía mal. A los días mi esposa me preguntó qué perfume estaba usando porque olía más limpio. Ni perfume me había puesto.</blockquote>
+        <footer><img class="tavatar" src="{{ 'pc-p-images-v2_avatars_t06.jpg' | asset_url }}" alt="" loading="lazy" width="46" height="46"><span class="tmeta"><span class="tname">Andrés</span><span>Comprador del primer lote</span></span></footer>
+      </article>
+      <article class="tcard" data-t="5">
+        <blockquote>No voy a decir que hace milagros pero sí hay diferencia. Antes me bañaba en la mañana y como a las 3 o 4 de la tarde yo mismo sentía un olor raro en la playera. Eso ya casi no me pasa.</blockquote>
+        <footer><img class="tavatar" src="{{ 'pc-p-images-v2_avatars_t05.jpg' | asset_url }}" alt="" loading="lazy" width="46" height="46"><span class="tmeta"><span class="tname">Manuel</span><span>Comprador del primer lote</span></span></footer>
+      </article>
+    </div>
+    <p class="tdisclose">Opiniones textuales reales del primer lote. Nombres e imágenes cambiados para proteger la privacidad.</p>
+  </div>
+</section>
+
+<!-- ═══ BENEFIT STRIP — 3 frentes ═══ -->
+<section class="benefitstrip" aria-label="Los tres frentes">
+  <div class="wrap row">
+    <span class="item"><span class="n" aria-hidden="true">①</span> Apaga el olor de raíz</span>
+    <span class="sep" aria-hidden="true">·</span>
+    <span class="item"><span class="n" aria-hidden="true">②</span> Baja la fuente</span>
+    <span class="sep" aria-hidden="true">·</span>
+    <span class="item"><span class="n" aria-hidden="true">③</span> Atrapa y enjuaga</span>
+  </div>
+</section>
+
+<!-- ═══ TRANSITION CLAIM ═══ -->
+<section class="claimband">
+  <div class="wrap">
+    <h2>Tu jabón de siempre no puede con ese olor. <span class="accent">No está hecho para eso</span>.</h2>
+  </div>
+</section>
+
+<!-- ═══ EDUCATION 1 — why it won't wash off ═══ -->
+<section class="edu" aria-labelledby="edu1-title">
+  <div class="wrap edu__inner">
+    <h2 id="edu1-title">¿Por qué no se quita, <span class="accent">por más que te bañes</span>?</h2>
+    <p>Nadie te lo había dicho. Después de los 40, la piel cambia. Hace menos defensas propias. Y su aceite de siempre se pone <strong>rancio</strong>. Como el aceite de cocina que se queda fuera.</p>
+    <p>Ese aceite rancio <strong>repele el agua</strong>. La espuma le pasa por encima y lo deja ahí. No es que te falte baño. Es que tu jabón no lo alcanza.</p>
+    <p class="note">La ciencia ya le puso nombre: 2-nonenal. No se disuelve en agua. Por eso sigue ahí aunque te bañes. No es mugre. No es descuido. No es tu culpa.</p>
+    <figure class="vid-fig">
+      <video autoplay muted loop playsinline preload="metadata" aria-label="Animación del punto ciego: el olor que tú ya no percibes" width="1280" height="720">
+        <source src="{{ 'pc-clip-blindspot.mp4' | asset_url }}" type="video/mp4">
+      </video>
+      <figcaption>El punto ciego: tu nariz se acostumbra y deja de avisarte. Los demás sí lo notan.</figcaption>
+    </figure>
+  </div>
+</section>
+
+<!-- ═══ EDUCATION 2 — why everything failed (not your fault) ═══ -->
+<section class="edu" aria-labelledby="edu2-title" style="background:linear-gradient(180deg,var(--bg-1),var(--bg-0))">
+  <div class="wrap edu__inner">
+    <h2 id="edu2-title">Por qué te falló todo lo que probaste — y por qué <span class="accent">no es tu culpa</span></h2>
+    <p>El olor no es una sola cosa. Son tres tipos de molécula. Los ácidos del sudor. Las aminas. Y el aceite rancio que se <strong>suma</strong> después de los 40.</p>
+    <p>¿Ves el patrón? Cada cosa que probaste iba a un solo frente:</p>
+    <ul class="ledger">
+      <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6 6 18M6 6l12 12"/></svg><span>El desodorante solo <strong>tapa</strong> el olor. Y al mezclarse, a veces huele peor.</span></li>
+      <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6 6 18M6 6l12 12"/></svg><span>El desodorante fuerte rebota. Al dejarlo, quedas peor.</span></li>
+      <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6 6 18M6 6l12 12"/></svg><span>El jabón con antibacterial arrasa con todo. Lo bueno y lo malo. El olor vuelve más fuerte.</span></li>
+      <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6 6 18M6 6l12 12"/></svg><span>Y el jabón de caqui solo, cubre un frente. Deja dos abiertos.</span></li>
+    </ul>
+    <p>Y cuando lo contaste, te dijeron: "báñate más". No falló tu esfuerzo. Faltaba el porqué.</p>
+    <p class="kicker">El producto no era malo. Iba a un frente de tres.</p>
+  </div>
+</section>
+
+<!-- ═══ TESTIMONIOS — a ellos también se lo dijo alguien más ═══ -->
+<section class="tset" aria-label="Opiniones reales: a ellos también se lo dijo alguien más">
+  <div class="wrap">
+    <span class="eyebrow tset__eyebrow">A ellos también se lo dijo alguien más · opiniones reales del primer lote</span>
+    <div class="tgrid tcarousel" data-carousel>
+      <article class="tcard" data-t="2">
+        <blockquote>Tengo 51 años y siempre he sido muy limpio. Un día mi hija me dijo que mi camisa olía raro aunque acababa de bañarme. Llevo como dos semanas usando este jabón y ya no me ha vuelto a decir nada.</blockquote>
+        <footer><img class="tavatar" src="{{ 'pc-p-images-v2_testimonials_ricardo.jpg' | asset_url }}" alt="" loading="lazy" width="46" height="46"><span class="tmeta"><span class="tname">Ricardo, 51 años</span><span>Comprador del primer lote</span></span></footer>
+      </article>
+      <article class="tcard" data-t="15">
+        <blockquote>Mi esposa me había dicho una vez que olía 'como guardado' y la verdad me pegó en el orgullo porque soy bastante cuidadoso con mi higiene. Este jabón ha sido de las pocas cosas donde sí he visto diferencia.</blockquote>
+        <footer><img class="tavatar" src="{{ 'pc-p-images-v2_avatars_t15.jpg' | asset_url }}" alt="" loading="lazy" width="46" height="46"><span class="tmeta"><span class="tname">Roberto</span><span>Comprador del primer lote</span></span></footer>
+      </article>
+      <article class="tcard" data-t="8">
+        <blockquote>Mi hijo fue el culpable de que lo comprara 😂 me dijo 'pa, hueles como la casa del abuelo'. Me dio risa pero también me quedó la duda. Llevo un mes usándolo y ya no me ha vuelto a molestar con eso.</blockquote>
+        <footer><img class="tavatar" src="{{ 'pc-p-images-v2_avatars_t08.jpg' | asset_url }}" alt="" loading="lazy" width="46" height="46"><span class="tmeta"><span class="tname">Raúl</span><span>Comprador del primer lote</span></span></footer>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ CTA BAND 3 ═══ -->
+<section class="ctaband ctaband--tight">
+  <div class="wrap">
+    <h2>Deja de cambiar de producto.</h2>
+    <a class="btn btn--primary" href="#oferta">Probar Punto Ciego sin riesgo <span class="btn__ar" aria-hidden="true">→</span></a>
+    <p class="cta-micro"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6 9 17l-5-5"/></svg> Garantía 30 días. Te quedas la barra.</p>
+  </div>
+</section>
+
+<!-- ═══ MECHANISM — Sistema de 3 Frentes ═══ -->
+<section class="mech" aria-labelledby="mech-title">
+  <div class="wrap">
+    <div class="mech__head">
+      <h2 id="mech-title">Punto Ciego ataca el olor en 3 frentes. Todo en una barra.</h2>
+      <p>El olor no es una sola cosa. Son tres. Cada cosa que probaste iba solo a una. Por eso el olor siempre volvía.</p>
+      <figure class="lp-fig lp-fig--diagram">
+        <div class="media"><img src="{{ 'pc-p-images-v2_mechanism-3frentes.jpg' | asset_url }}" alt="Los 3 frentes de Punto Ciego contra el olor, en un solo esquema." loading="lazy" width="2048" height="2048"></div>
+      </figure>
+    </div>
+
+    <details class="mech__block mech__block--flip acc acc--auto" open>
+      <summary>
+        <span class="mech__num" aria-hidden="true">①</span>
+        <h3>Apaga el olor de raíz. No lo tapa.</h3>
+        <svg class="acc__chev" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+      </summary>
+      <div class="mech__body">
+        <div class="mech__media">
+          <div class="media"><img src="{{ 'pc-p-images-v2_ingredient-caqui-te.jpg' | asset_url }}" alt="Caqui y té verde — los activos del frente 1" loading="lazy" width="2048" height="2048"></div>
+        </div>
+        <div class="mech__text">
+          <p>El té verde trae EGCG. Hay estudios de esto: se une a la molécula del olor y la cambia, para que deje de oler. El tanino de caqui suma lo suyo. Atrapa los ácidos del sudor. Japón lo usa así desde hace siglos. Por eso esta barra no te pone un aroma encima. Va al olor, no al disfraz.</p>
+          <span class="mech__cite">Cita: EGCG — DOI 10.1271/bbb.59.1232; PMID 11999411. Tanino de caqui: prueba GC-MS de adsorción.</span>
+        </div>
+      </div>
+    </details>
+
+    <details class="mech__block acc acc--auto">
+      <summary>
+        <span class="mech__num" aria-hidden="true">②</span>
+        <h3>Baja la fuente.</h3>
+        <svg class="acc__chev" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+      </summary>
+      <div class="mech__body">
+        <div class="mech__media">
+          <div class="media" style="aspect-ratio:1100/1075;background:#fff;border-radius:inherit;"><img src="{{ 'pc-p-images-v2_estudio-zinc.jpg' | asset_url }}" alt="Estudio publicado: óxido de zinc y mal olor axilar — Acta Dermato-Venereologica 2020, PMID 32399578." loading="lazy" width="1100" height="1075" style="object-fit:contain;background:#fff;"></div>
+        </div>
+        <div class="mech__text">
+          <span class="badge-proof"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6"><path d="M20 6 9 17l-5-5"/></svg> El frente con prueba en personas</span>
+          <p>Este frente tiene la prueba más fuerte. El óxido de zinc se probó en un estudio con personas. ¿Qué mostró? Menos bacteria del olor en la piel. Y menos mal olor. No arrasa con todo, como esos jabones fuertes. Corrige la fuente. Y la base es suave. La puedes usar a diario, aun si te rasuras.</p>
+          <span class="mech__cite">Cita: óxido de zinc, estudio en personas — PMID 32399578. Es el único frente con prueba así.</span>
+        </div>
+      </div>
+    </details>
+
+    <details class="mech__block mech__block--flip acc acc--auto">
+      <summary>
+        <span class="mech__num" aria-hidden="true">③</span>
+        <h3>Atrapa y enjuaga lo que queda.</h3>
+        <svg class="acc__chev" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+      </summary>
+      <div class="mech__body">
+        <div class="mech__media">
+          <div class="media"><img src="{{ 'pc-p-images-v2_ingredient-charcoal.jpg' | asset_url }}" alt="Carbón de bambú junto a la barra Punto Ciego." loading="lazy" width="2048" height="2048"></div>
+        </div>
+        <div class="mech__text">
+          <p>El zinc de esta barra es como una jaula. Atrapa las moléculas del olor y no las suelta. El carbón de bambú levanta la grasa vieja de la piel. Todo se va con el agua. Un jabón de un solo activo hace una parte. Esta barra hace las tres.</p>
+          <span class="mech__cite">Cita: ricinoleato de zinc (jaula molecular) — DOI 10.1007/s11743-000-0137-9. Carbón: adsorción, señal cosmética.</span>
+        </div>
+      </div>
+    </details>
+
+    <p class="mech__equalizer">Los tres frentes trabajan juntos. Solo uno tiene estudio en personas: el del zinc. Te lo decimos tal cual.</p>
+  </div>
+</section>
+
+<!-- ═══ TESTIMONIOS — llegaron con dudas ═══ -->
+<section class="tset tset--deep" aria-label="Opiniones reales: llegaron con dudas">
+  <div class="wrap">
+    <span class="eyebrow tset__eyebrow">Llegaron con dudas · opiniones reales del primer lote</span>
+    <div class="tgrid tcarousel" data-carousel>
+      <article class="tcard" data-t="3">
+        <blockquote>Yo pensé que esto del olor después de los 40 era puro invento para vender. Lo compré porque se paga cuando llega. La verdad sí he notado que ya no queda ese olor como aceitoso en el cuello y pecho.</blockquote>
+        <footer><img class="tavatar" src="{{ 'pc-p-images-v2_testimonials_fernando.jpg' | asset_url }}" alt="" loading="lazy" width="46" height="46"><span class="tmeta"><span class="tname">Fernando</span><span>Cliente verificado · primer lote</span></span></footer>
+      </article>
+      <article class="tcard" data-t="10">
+        <blockquote>Tengo 55. El olor no era a sudor, era otra cosa, como grasa vieja, difícil de explicar. Eso fue exactamente lo que me llamó la atención del anuncio. En mi caso sí me ayudó bastante.</blockquote>
+        <footer><img class="tavatar" src="{{ 'pc-p-images-v2_avatars_t10.jpg' | asset_url }}" alt="" loading="lazy" width="46" height="46"><span class="tmeta"><span class="tname">Guillermo, 55 años</span><span>Comprador del primer lote</span></span></footer>
+      </article>
+      <article class="tcard" data-t="18">
+        <blockquote>Probé uno de caqui que compré por internet hace tiempo y la verdad no sentí mucho cambio. Con este sí siento que la piel queda diferente, sobre todo en espalda, pecho y cuello.</blockquote>
+        <footer><img class="tavatar" src="{{ 'pc-p-images-v2_avatars_t18.jpg' | asset_url }}" alt="" loading="lazy" width="46" height="46"><span class="tmeta"><span class="tname">Óscar</span><span>Comprador del primer lote</span></span></footer>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ CTA BAND 1 ═══ -->
+<section class="ctaband ctaband--tight">
+  <div class="wrap">
+    <h2>Empieza sin riesgo.</h2>
+    <a class="btn btn--primary" href="#oferta">Probar Punto Ciego sin riesgo <span class="btn__ar" aria-hidden="true">→</span></a>
+    <p class="cta-micro"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6 9 17l-5-5"/></svg> Garantía 30 días. Te quedas la barra.</p>
+  </div>
+</section>
+
+<!-- ═══ RETURN LINE ═══ -->
+<section class="returnline">
+  <div class="wrap"><p>Nuestra garantía es simple: <span class="accent">quédate la barra</span>.</p></div>
+</section>
+
+<!-- ═══ TIMELINE — compliant, non-temporal reframe ═══ -->
+<section class="timeline" aria-labelledby="tl-title">
+  <div class="wrap">
+    <div class="timeline__head">
+      <h2 id="tl-title">¿Qué vas a notar?</h2>
+      <p>Sin promesas con reloj. Esto es lo honesto: desde el primer baño, en tu rutina y con el tiempo.</p>
+      <figure class="lp-fig">
+        <div class="media"><img src="{{ 'pc-p-images-v2_lifestyle-work-confidence.jpg' | asset_url }}" alt="Hombre de 40+ en su trabajo, cercano y seguro, sin pensar en el olor." loading="lazy" width="1856" height="2304"></div>
+      </figure>
+    </div>
+    <div class="timeline__stages">
+      <details class="stage acc acc--auto" open>
+        <summary>
+          <h3 class="stage__label">Desde el primer baño</h3>
+          <svg class="acc__chev" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+        </summary>
+        <div class="stage__body">
+          <div class="stage__item"><h4>Frescura que sí sientes</h4><p>El caqui deja la piel fresca al salir. Eso lo sientes tú, al momento.</p></div>
+          <div class="stage__item"><h4>Tres frentes en un paso</h4><p>Todo pasa mientras te bañas. Sin pasos extra.</p></div>
+          <div class="stage__item"><h4>Suave para diario</h4><p>No reseca ni arde. Hecha para piel que se rasura.</p></div>
+        </div>
+      </details>
+      <details class="stage acc acc--auto">
+        <summary>
+          <h3 class="stage__label">En tu rutina</h3>
+          <svg class="acc__chev" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+        </summary>
+        <div class="stage__body">
+          <div class="stage__item"><h4>Dejas de perseguir el olor</h4><p>Lo trabajas en el baño. Ya no lo tapas después.</p></div>
+          <div class="stage__item"><h4>Rinde semanas y semanas</h4><p>Barra grande y dura. No se deshace como el importado.</p></div>
+          <div class="stage__item"><h4>Quita olor, no sudor</h4><p>No bloquea tu sudor. Trabaja con tu piel.</p></div>
+        </div>
+      </details>
+      <details class="stage acc acc--auto">
+        <summary>
+          <h3 class="stage__label">Con el tiempo</h3>
+          <svg class="acc__chev" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+        </summary>
+        <div class="stage__body">
+          <div class="stage__item"><h4>Alguien te lo dice</h4><p>Tu esposa. Un amigo. Sin que preguntes. Esa es la prueba real.</p></div>
+          <div class="stage__item"><h4>Sales sin el chequeo</h4><p>Se acaba el gesto de olerte el hombro.</p></div>
+          <div class="stage__item"><h4>Vuelves a oler a ti</h4><p>No a perfume encima del olor. A ti. La palabra que usan: libertad.</p></div>
+        </div>
+      </details>
+    </div>
+    <p class="timeline__foot">Tienes 30 días completos para decidir. Con tu palabra basta.</p>
+  </div>
+</section>
+
+<!-- ═══ TESTIMONIO DESTACADO — primer lote ═══ -->
+<section class="tfeat" aria-label="Opinión destacada del primer lote">
+  <div class="wrap">
+    <span class="tfeat__mark" aria-hidden="true">“</span>
+    <blockquote data-t="1">Compré por las dudas, no creí que tuviera un olor como rancio, pero lo usé y en esa semana tres personas me dijeron que olía muy bien. Le conté a mi esposa y me dijo 'sí tenías un olor raro ya desde hace algunos años, pero no quería hacerte sentir mal'.</blockquote>
+    <footer><img class="tavatar tavatar--lg" src="{{ 'pc-p-images-v2_avatars_t01.jpg' | asset_url }}" alt="" loading="lazy" width="56" height="56"><span>Jorge · Comprador del primer lote</span></footer>
+  </div>
+</section>
+
+<!-- ═══ CTA BAND 2 ═══ -->
+<section class="ctaband ctaband--tight">
+  <div class="wrap">
+    <h2>La primera barra hecha para los tres frentes.</h2>
+    <a class="btn btn--primary" href="#oferta">Probar Punto Ciego sin riesgo <span class="btn__ar" aria-hidden="true">→</span></a>
+    <p class="cta-micro"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6 9 17l-5-5"/></svg> Garantía 30 días. Te quedas la barra.</p>
+  </div>
+</section>
+
+<!-- ═══ REVIEW WALL — opiniones reales del primer lote ═══ -->
+<section class="proof" id="opiniones" aria-labelledby="proof-title">
+  <div class="wrap">
+    <div class="proof__quote">
+      <h2 id="proof-title">Lo que dijo el primer lote.</h2>
+      <p>20 opiniones reales de compradores del primer lote de prueba. Sin filtrar, sin inventar. Las demás están repartidas a lo largo de esta página.</p>
+    </div>
+    <div class="reviews tcarousel" data-carousel>
+      <article class="tcard" data-t="4">
+        <blockquote>Mi esposa me llevaba diciendo meses que cambiara de desodorante. Cambié como cuatro y seguía igual. Con este jabón fue cuando por fin me dijo que ya no sentía ese olor.</blockquote>
+        <footer><img class="tavatar" src="{{ 'pc-p-images-v2_avatars_t04.jpg' | asset_url }}" alt="" loading="lazy" width="46" height="46"><span class="tmeta"><span class="tname">Alejandro</span><span>Comprador del primer lote</span></span></footer>
+      </article>
+      <article class="tcard" data-t="7">
+        <blockquote>Tengo 46 y trabajo todo el día en oficina. No sudo demasiado, por eso nunca entendía por qué algunas camisas agarraban un olor extraño. Desde que uso Punto Ciego lo he notado mucho menos.</blockquote>
+        <footer><img class="tavatar" src="{{ 'pc-p-images-v2_testimonials_hector.jpg' | asset_url }}" alt="" loading="lazy" width="46" height="46"><span class="tmeta"><span class="tname">Héctor, 46 años</span><span>Comprador del primer lote</span></span></footer>
+      </article>
+      <article class="tcard" data-t="9">
+        <blockquote>Pensaba que era la ropa porque incluso recién lavado algunas veces quedaba ese olor. Cambié detergente, suavizante, desodorante… al final probé esto y sí siento que el problema venía más de la piel.</blockquote>
+        <footer><img class="tavatar" src="{{ 'pc-p-images-v2_avatars_t09.jpg' | asset_url }}" alt="" loading="lazy" width="46" height="46"><span class="tmeta"><span class="tname">Sergio</span><span>Comprador del primer lote</span></span></footer>
+      </article>
+      <article class="tcard" data-t="12">
+        <blockquote>La primera vez no noté gran cosa. Como al cuarto o quinto día sí me di cuenta que al quitarme la camisa en la noche ya no tenía ese olor que antes se quedaba en el cuello.</blockquote>
+        <footer><img class="tavatar" src="{{ 'pc-p-images-v2_avatars_t12.jpg' | asset_url }}" alt="" loading="lazy" width="46" height="46"><span class="tmeta"><span class="tname">Marco</span><span>Comprador del primer lote</span></span></footer>
+      </article>
+      <article class="tcard" data-t="13">
+        <blockquote>Soy de Mérida y con este calor me baño hasta dos veces al día. El problema era que había un olor que regresaba rapidísimo aunque no estuviera sudando. Con este jabón aguanto mucho mejor el día.</blockquote>
+        <footer><img class="tavatar" src="{{ 'pc-p-images-v2_avatars_t13.jpg' | asset_url }}" alt="" loading="lazy" width="46" height="46"><span class="tmeta"><span class="tname">Eduardo · Mérida, Yucatán</span><span>Comprador del primer lote</span></span></footer>
+      </article>
+      <article class="tcard" data-t="14">
+        <blockquote>Tengo 49 y nunca pensé que fuera un tema de edad. Creía que simplemente mi desodorante ya no me funcionaba. Me gustó porque no deja un perfume fuerte, solo siento que quedo limpio.</blockquote>
+        <footer><img class="tavatar" src="{{ 'pc-p-images-v2_testimonials_javier.jpg' | asset_url }}" alt="" loading="lazy" width="46" height="46"><span class="tmeta"><span class="tname">Javier, 49 años</span><span>Comprador del primer lote</span></span></footer>
+      </article>
+      <article class="tcard" data-t="17">
+        <blockquote>No sabía si yo tenía ese famoso olor porque uno mismo se acostumbra. Después de usarlo unos días le pregunté directamente a mi esposa y me dijo que sí había cambiado bastante. Ahí fue cuando me convenció.</blockquote>
+        <footer><img class="tavatar" src="{{ 'pc-p-images-v2_avatars_t17.jpg' | asset_url }}" alt="" loading="lazy" width="46" height="46"><span class="tmeta"><span class="tname">Gerardo</span><span>Comprador del primer lote</span></span></footer>
+      </article>
+      <article class="tcard" data-t="20">
+        <blockquote>No es que antes oliera horrible ni nada así. Era más bien un olor raro que aparecía conforme pasaban las horas. Desde que empecé a usar Punto Ciego siento que llego al final del día mucho más fresco.</blockquote>
+        <footer><img class="tavatar" src="{{ 'pc-p-images-v2_avatars_t20.jpg' | asset_url }}" alt="" loading="lazy" width="46" height="46"><span class="tmeta"><span class="tname">Daniel</span><span>Comprador del primer lote</span></span></footer>
+      </article>
+    </div>
+    <p class="proof__foot">Opiniones textuales reales del primer lote. Nombres e imágenes cambiados para proteger la privacidad. Sin estrellas inventadas.</p>
+  </div>
+</section>
+
+<!-- ═══ CTA BAND 4 ═══ -->
+<section class="ctaband ctaband--tight">
+  <div class="wrap">
+    <h2>Prueba la barra hecha para los tres frentes.</h2>
+    <a class="btn btn--primary" href="#oferta">Probar Punto Ciego sin riesgo <span class="btn__ar" aria-hidden="true">→</span></a>
+    <p class="cta-micro"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6 9 17l-5-5"/></svg> Garantía 30 días. Te quedas la barra.</p>
+  </div>
+</section>
+
+<!-- ═══ OFFER + honest urgency ═══ -->
+<section class="buybox" id="oferta" aria-labelledby="bb-title">
+  <div class="bbwrap buybox-grid">
+    <div class="bb-gallery">
+      <div class="bb-main">
+        <img id="bb-main-img" src="{{ 'pc-p-images-v2_gallery_gal-01-producto.jpg' | asset_url }}" alt="La barra Punto Ciego">
+      </div>
+      <div class="bb-thumbs" aria-label="Fotos del producto">
+        <button class="bb-thumb is-active" type="button" data-img="{{ 'pc-p-images-v2_gallery_gal-01-producto.jpg' | asset_url }}"><img src="{{ 'pc-p-images-v2_gallery_gal-01-producto.jpg' | asset_url }}" alt=""></button>
+        <button class="bb-thumb" type="button" data-img="{{ 'pc-p-images-v2_offer-size-comparison.jpg' | asset_url }}"><img src="{{ 'pc-p-images-v2_offer-size-comparison.jpg' | asset_url }}" alt=""></button>
+        <button class="bb-thumb" type="button" data-img="{{ 'pc-p-images-v2_gallery_gal-05-como-usar.jpg' | asset_url }}"><img src="{{ 'pc-p-images-v2_gallery_gal-05-como-usar.jpg' | asset_url }}" alt=""></button>
+        <button class="bb-thumb" type="button" data-img="{{ 'pc-p-images-v2_gallery_gal-08-garantia.jpg' | asset_url }}"><img src="{{ 'pc-p-images-v2_gallery_gal-08-garantia.jpg' | asset_url }}" alt=""></button>
+        <button class="bb-thumb" type="button" data-img="{{ 'pc-p-images-v2_gallery_gal-10-hombre.jpg' | asset_url }}"><img src="{{ 'pc-p-images-v2_gallery_gal-10-hombre.jpg' | asset_url }}" alt=""></button>
+        <button class="bb-thumb" type="button" data-img="{{ 'pc-p-images-v2_gift-unboxing.jpg' | asset_url }}"><img src="{{ 'pc-p-images-v2_gift-unboxing.jpg' | asset_url }}" alt=""></button>
+      </div>
+      <aside class="bb-review">
+        <p class="bb-review-head"><img class="bb-review-avatar" src="{{ 'pc-p-images-v2_testimonials_mauricio.jpg' | asset_url }}" alt=""><strong>Mauricio H.</strong> <span class="bb-verified">Usuario real · Primer lote</span></p>
+        <blockquote>"Mi esposa me dijo que tenía un olor 'raro' a pesar de ducharme dos veces al día con jabón. Gracias a Punto Ciego ese olor desapareció."</blockquote>
+      </aside>
+    </div>
+    <div class="bb-panel">
+      <p class="bb-eyebrow">Primer lote en México · Garantía 30 días</p>
+      <h2 id="bb-title">Jabón Corporal Punto Ciego</h2>
+      <p class="bb-desc"><strong>Hecho para el olor que aparece después de los 40</strong>: neutraliza el aceite que tu jabón de siempre deja pasar, también en espalda, pecho y cuello. Cedro negro y ámbar, 120 g.</p>
+      <p class="bb-divider"><span>Compra más, ahorra más</span></p>
+      <div class="bb-tiers">
+        <label class="bb-tier">
+          <span class="bb-pop bb-pop--value">Mejor precio</span>
+          <input type="radio" name="tier" value="kit3" data-freq="cada 90 días" data-extra=" Y el Kit baja a $509.">
+          <span class="bb-radio" aria-hidden="true"></span>
+          <img class="bb-tier-img" src="{{ 'pc-l-bundle-3.jpg' | asset_url }}" alt="">
+          <span class="bb-tier-name"><strong>Kit 3 Frentes</strong> <span class="bb-supply">Para 3 meses</span><small>$200 por barra · te ahorras $268 vs comprarlas sueltas</small></span>
+          <span class="bb-tier-price"><strong>$599</strong></span>
+          <span class="bb-tier-strip">Súmale la jabonera de bambú por $99</span>
+        </label>
+        <label class="bb-tier is-popular">
+          <span class="bb-pop">El más pedido</span>
+          <input type="radio" name="tier" value="duo" checked data-freq="cada 2 meses" data-extra="">
+          <span class="bb-radio" aria-hidden="true"></span>
+          <img class="bb-tier-img" src="{{ 'pc-l-bundle-2.jpg' | asset_url }}" alt="">
+          <span class="bb-tier-name"><strong>Dúo</strong> <span class="bb-supply">Para 2 meses</span><small>La segunda barra te sale en $10 · precio de lanzamiento</small></span>
+          <span class="bb-tier-price"><strong>$299</strong></span>
+        </label>
+        <label class="bb-tier">
+          <input type="radio" name="tier" value="una" data-freq="cada mes" data-extra="">
+          <span class="bb-radio" aria-hidden="true"></span>
+          <img class="bb-tier-img" src="{{ 'pc-l-bundle-1.jpg' | asset_url }}" alt="">
+          <span class="bb-tier-name"><strong>1 barra</strong> <span class="bb-supply">Para 1 mes</span><small>Para probarla</small></span>
+          <span class="bb-tier-price"><strong>$289</strong></span>
+        </label>
+      </div>
+      <label class="bb-subscribe">
+        <input type="checkbox" name="reabastecer">
+        <span class="bb-check" aria-hidden="true"></span>
+        <span><strong>Que el 'olor a viejito' no vuelva porque se te acabó el jabón.</strong><small id="bb-sub-freq">Te la reenviamos cada 2 meses. Cancelas en un clic, sin cargos sorpresa.</small></span>
+      </label>
+      <p class="bb-pill">Nos cuesta menos enviar todo junto. Ese ahorro es tuyo cuando llevas más.</p>
+      <a class="btn btn--primary bb-cta" href="#">Agregar al carrito</a>
+      <p class="bb-note">Garantía 30 días: si no te encanta, te quedas la barra y te devolvemos cada peso.</p>
+      <div class="pay-badges bb-chips" aria-label="Formas de pago: OXXO, Visa y Mastercard">
+        <span class="pay-badge" role="img" aria-label="OXXO"><svg viewBox="0 0 48 30"><rect x="2" y="4" width="44" height="22" rx="3" fill="#e8b70a"/><rect x="2" y="9.5" width="44" height="11" fill="#d61118"/><text x="24" y="18.6" text-anchor="middle" font-family="Arial, sans-serif" font-weight="900" font-size="9.5" fill="#ffffff" letter-spacing="0.5">OXXO</text></svg></span>
+        <span class="pay-badge" role="img" aria-label="Visa"><svg viewBox="0 0 48 30"><text x="24" y="20" text-anchor="middle" font-family="Arial, sans-serif" font-weight="800" font-style="italic" font-size="13" fill="#1a1f71" letter-spacing="0.5">VISA</text></svg></span>
+        <span class="pay-badge" role="img" aria-label="Mastercard"><svg viewBox="0 0 48 30"><circle cx="19.5" cy="15" r="9" fill="#eb001b"/><circle cx="28.5" cy="15" r="9" fill="#f79e1b"/><path d="M24 7.8a9 9 0 0 1 0 14.4 9 9 0 0 1 0-14.4z" fill="#ff5f00"/></svg></span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ GUARANTEE ═══ -->
+<section class="guarantee" aria-labelledby="guarantee-title">
+  <div class="wrap guarantee__inner">
+    <div class="seal" aria-hidden="true"><svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2"><path d="M12 2 4 6v6c0 5 3.4 8.5 8 10 4.6-1.5 8-5 8-10V6l-8-4Z"/><path d="m9 12 2 2 4-4"/></svg></div>
+    <h2 id="guarantee-title">Quédate la barra.</h2>
+    <p class="guarantee__hero"><strong>Pruébala 30 días. ¿No te encanta? Quédate la barra. Y te devolvemos cada peso.</strong></p>
+    <p class="sub">Léelo otra vez. El riesgo es cero. Y es nuestro. No devuelves nada. No pagas envíos de vuelta. No hay letra chica. Solo un WhatsApp y una persona real que contesta.</p>
+    <details>
+      <summary>Cómo funciona la garantía</summary>
+      <ul>
+        <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6 9 17l-5-5"/></svg> 30 días, contados desde que la recibes.</li>
+        <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6 9 17l-5-5"/></svg> Quédate la barra. No hay que regresar nada.</li>
+        <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6 9 17l-5-5"/></svg> Sin costo de envío de vuelta. Sin cargos raros.</li>
+        <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6 9 17l-5-5"/></svg> Negocio mexicano real. WhatsApp y correo que un humano contesta (lun–sáb).</li>
+        <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6 9 17l-5-5"/></svg> Tienes 30 días completos para decidir. Con tu palabra basta.</li>
+      </ul>
+    </details>
+    <a class="btn btn--primary" href="#oferta">Empezar sin riesgo <span class="btn__ar" aria-hidden="true">→</span></a>
+  </div>
+</section>
+
+<!-- ═══ FAQ (Punto Ciego) ═══ -->
+<section class="faq" aria-labelledby="faq-title">
+  <div class="wrap">
+    <h2 id="faq-title">Lo que te has de estar preguntando.</h2>
+    <div class="faq__list">
+      <details>
+        <summary>El jabón se enjuaga. ¿De qué sirve contra el olor?</summary>
+        <p>Punto Ciego no deja una capa. Trabaja mientras te bañas. Atrapa los ácidos. Cambia la molécula del olor. Y baja la bacteria que lo hace. Es la misma idea del ácido glicólico o la piedra de alumbre. Aquí, hecha barra. Y viene una prueba de lab de nuestra barra. El resultado se publica aquí. Salga como salga.</p>
+      </details>
+      <details>
+        <summary>¿De verdad dura más del día 3? El de caqui se me apagó rápido.</summary>
+        <p>Ya sé: ese también traía ciencia. Pero traía un solo activo con historia. Cubre un frente. El resto del olor regresa. Aquí citamos estudios de tres ingredientes. Y el del zinc se hizo en personas. Por eso la hicimos así. Y por si acaso: tienes 30 días. Si no te encanta, te quedas la barra y te devolvemos cada peso.</p>
+      </details>
+      <details>
+        <summary>¿Esto detiene el sudor?</summary>
+        <p>No. Y es adrede. No corta el sudor. No lo bloquea. Quita el olor y baja la bacteria que lo hace. Trabaja con tu piel, no contra ella.</p>
+      </details>
+      <details>
+        <summary>¿Es como los jabones "milagro" de Facebook?</summary>
+        <p>Lo contrario. Nada de "milagro". Nada de números inflados. Ciencia que puedes buscar tú mismo. Una receta con siglos de uso. Y algo más: la prueba de nuestra barra aún viene en camino. Te lo decimos de frente. El resultado se publica aquí. Por eso el riesgo es nuestro.</p>
+      </details>
+      <details>
+        <summary>¿Y si vivo lejos? ¿Cómo pago?</summary>
+        <p>Pagas al hacer tu pedido, con tarjeta u OXXO. Y estás cubierto: 30 días de garantía, te quedas la barra y te devolvemos cada peso.</p>
+      </details>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ═══ EMAIL FOOTER ═══ -->
+<footer class="footer">
+  <div class="wrap">
+    <span class="footer__brand">Punto Ciego</span>
+    <h2>Tips y avisos de Punto Ciego</h2>
+    <p class="sub">Suscríbete: tips de frescura, la ciencia de los 3 frentes y avisos de lotes nuevos.</p>
+    <form class="signup" onsubmit="return false" aria-label="Suscripción por correo">
+      <input type="email" name="email" placeholder="Tu correo aquí" aria-label="Tu correo electrónico" required>
+      <button type="submit">Suscribirme</button>
+    </form>
+    <p class="footer__legal">
+      Punto Ciego es un jabón cosmético en barra, con taninos de caqui. Quita olor; no es medicina. No cura nada. Los estudios que citamos son de sus ingredientes. La prueba de la barra final viene en camino. El 2-nonenal se nombra solo para dar el porqué. Frescura de raíz, a cualquier edad.
+    </p>
+  </div>
+</footer>
+
+<!-- ═══ STICKY MOBILE CTA ═══ -->
+<div class="mcta" aria-hidden="false">
+  <div class="mcta__price">MXN 299 <span>Dúo · garantía 30 días</span></div>
+  <a class="btn btn--primary" href="#oferta">Probar sin riesgo</a>
+</div>
+
+<script>
+(function(){
+  var main=document.getElementById('gallery-main-img');
+  var gal=document.getElementById('galeria');
+  if(!main||!gal)return;
+  var strip=gal.querySelector('.gallery__thumbs');
+  var thumbs=Array.prototype.slice.call(gal.querySelectorAll('.gallery__thumb'));
+  var n=thumbs.length,idx=0,preloaded={};
+  function preload(i){
+    i=((i%n)+n)%n;
+    var src=thumbs[i].getAttribute('data-src');
+    if(preloaded[src])return;
+    preloaded[src]=1;
+    var im=new Image();im.src=src;
+  }
+  function show(i){
+    i=((i%n)+n)%n;
+    if(i===idx&&main.getAttribute('src')===thumbs[i].getAttribute('data-src'))return;
+    idx=i;
+    var t=thumbs[i];
+    thumbs.forEach(function(b,j){
+      if(j===i){b.setAttribute('aria-current','true');}
+      else{b.removeAttribute('aria-current');}
+    });
+    main.classList.add('is-fading');
+    window.setTimeout(function(){
+      var done=function(){main.classList.remove('is-fading');main.removeEventListener('load',done);};
+      main.addEventListener('load',done);
+      main.src=t.getAttribute('data-src');
+      main.alt=t.getAttribute('data-alt');
+      if(main.complete)done();
+    },150);
+    /* keep active thumb in view (horizontal only — no page jump) */
+    var left=t.offsetLeft-strip.offsetLeft;
+    var target=left-(strip.clientWidth-t.offsetWidth)/2;
+    strip.scrollTo({left:Math.max(0,target),behavior:'smooth'});
+    preload(i+1);preload(i-1);
+  }
+  thumbs.forEach(function(b,i){
+    b.addEventListener('click',function(){show(i);});
+  });
+  /* keyboard: arrows work when focus is anywhere inside the gallery */
+  gal.addEventListener('keydown',function(e){
+    if(e.key==='ArrowRight'){e.preventDefault();show(idx+1);}
+    else if(e.key==='ArrowLeft'){e.preventDefault();show(idx-1);}
+  });
+  /* swipe on the main image */
+  var sx=null,sy=null;
+  var mainWrap=gal.querySelector('.gallery__main');
+  mainWrap.addEventListener('touchstart',function(e){
+    sx=e.touches[0].clientX;sy=e.touches[0].clientY;
+  },{passive:true});
+  mainWrap.addEventListener('touchend',function(e){
+    if(sx===null)return;
+    var dx=e.changedTouches[0].clientX-sx;
+    var dy=e.changedTouches[0].clientY-sy;
+    sx=sy=null;
+    if(Math.abs(dx)>40&&Math.abs(dx)>Math.abs(dy)){
+      show(idx+(dx<0?1:-1));
+    }
+  },{passive:true});
+  preload(1);preload(n-1);
+})();
+
+/* ═══ Testimonial carousels — scroll-snap + dots/arrows (no library) ═══ */
+(function(){
+  var mqDesk=window.matchMedia('(min-width:1024px)');
+  document.querySelectorAll('[data-carousel]').forEach(function(track){
+    var cards=Array.prototype.slice.call(track.querySelectorAll(':scope > .tcard'));
+    if(cards.length<2)return;
+    var nav=document.createElement('div');
+    nav.className='tnav';
+    var prev=document.createElement('button');
+    prev.type='button';prev.className='tnav__btn';prev.setAttribute('aria-label','Opinión anterior');
+    prev.innerHTML='<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="m15 6-6 6 6 6"/></svg>';
+    var next=document.createElement('button');
+    next.type='button';next.className='tnav__btn';next.setAttribute('aria-label','Siguiente opinión');
+    next.innerHTML='<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg>';
+    var dotsWrap=document.createElement('div');
+    dotsWrap.className='tnav__dots';
+    var dots=cards.map(function(c,i){
+      var d=document.createElement('button');
+      d.type='button';d.className='tnav__dot';
+      d.setAttribute('aria-label','Ir a la opinión '+(i+1)+' de '+cards.length);
+      if(i===0)d.setAttribute('aria-current','true');
+      d.addEventListener('click',function(){goTo(i);});
+      dotsWrap.appendChild(d);
+      return d;
+    });
+    nav.appendChild(prev);nav.appendChild(dotsWrap);nav.appendChild(next);
+    track.parentNode.insertBefore(nav,track.nextSibling);
+    var cur=0;
+    function goTo(i){
+      i=Math.max(0,Math.min(cards.length-1,i));
+      var c=cards[i];
+      track.scrollTo({left:c.offsetLeft-track.offsetLeft-(track.clientWidth-c.offsetWidth)/2,behavior:'smooth'});
+    }
+    prev.addEventListener('click',function(){goTo(cur-1);});
+    next.addEventListener('click',function(){goTo(cur+1);});
+    var raf=null;
+    track.addEventListener('scroll',function(){
+      if(raf)return;
+      raf=window.requestAnimationFrame(function(){
+        raf=null;
+        if(mqDesk.matches)return;
+        var mid=track.scrollLeft+track.clientWidth/2,best=0,bd=Infinity;
+        cards.forEach(function(c,i){
+          var d=Math.abs((c.offsetLeft-track.offsetLeft)+c.offsetWidth/2-mid);
+          if(d<bd){bd=d;best=i;}
+        });
+        if(best!==cur){
+          cur=best;
+          dots.forEach(function(d,i){
+            if(i===cur)d.setAttribute('aria-current','true');
+            else d.removeAttribute('aria-current');
+          });
+        }
+      });
+    },{passive:true});
+  });
+})();
+
+/* ═══ Accordions — aria mirror + desktop auto-expand ═══ */
+(function(){
+  var accs=Array.prototype.slice.call(document.querySelectorAll('details.acc'));
+  accs.forEach(function(d){
+    var s=d.querySelector('summary');
+    if(!s)return;
+    s.setAttribute('aria-expanded',d.open?'true':'false');
+    d.addEventListener('toggle',function(){s.setAttribute('aria-expanded',d.open?'true':'false');});
+    if(d.open)d.setAttribute('data-default-open','');
+  });
+  var autos=accs.filter(function(d){return d.classList.contains('acc--auto');});
+  var mq=window.matchMedia('(min-width:1024px)');
+  function apply(){
+    autos.forEach(function(d){
+      if(mq.matches){d.open=true;d.classList.add('is-static');}
+      else{d.classList.remove('is-static');d.open=d.hasAttribute('data-default-open');}
+    });
+  }
+  apply();
+  if(mq.addEventListener)mq.addEventListener('change',apply);
+  else if(mq.addListener)mq.addListener(apply);
+  var lastMatch=mq.matches,rt=null;
+  window.addEventListener('resize',function(){
+    if(rt)clearTimeout(rt);
+    rt=setTimeout(function(){
+      if(mq.matches!==lastMatch){lastMatch=mq.matches;apply();}
+    },120);
+  });
+})();
+
+/* ═══ Video clips — nudge autoplay (muted + playsinline already set) ═══ */
+(function(){
+  var vids=Array.prototype.slice.call(document.querySelectorAll('.vid-fig video'));
+  function nudge(v){
+    v.muted=true;
+    var p=v.play();
+    if(p&&p.catch)p.catch(function(){});
+  }
+  if('IntersectionObserver' in window){
+    var io=new IntersectionObserver(function(entries){
+      entries.forEach(function(en){
+        if(en.isIntersecting&&en.target.paused)nudge(en.target);
+      });
+    },{rootMargin:'120px 0px'});
+    vids.forEach(function(v){io.observe(v);});
+  }
+  vids.forEach(nudge);
+})();
+</script>
+<script>
+document.querySelectorAll('.bb-thumb').forEach(function(b){
+  b.addEventListener('click',function(){
+    document.getElementById('bb-main-img').src=b.dataset.img;
+    document.querySelectorAll('.bb-thumb').forEach(function(x){x.classList.remove('is-active');});
+    b.classList.add('is-active');
+  });
+});
+function bbFreq(){
+  var sel=document.querySelector('.bb-tier input:checked');
+  if(!sel)return;
+  document.getElementById('bb-sub-freq').textContent='Te la reenviamos '+sel.dataset.freq+'.'+(sel.dataset.extra||'')+' Cancelas en un clic, sin cargos sorpresa.';
+}
+document.querySelectorAll('.bb-tier input').forEach(function(r){r.addEventListener('change',bbFreq);});
+bbFreq();
+</script>
+
+{% schema %}
+{ "name": "PC Landing", "settings": [] }
+{% endschema %}

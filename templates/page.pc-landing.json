@@ -1,0 +1,11 @@
+{
+  "layout": "pc-blank",
+  "sections": {
+    "main": {
+      "type": "pc-landing"
+    }
+  },
+  "order": [
+    "main"
+  ]
+}
