@@ -494,6 +494,44 @@ section{padding-block:clamp(3.2rem,7vw,6rem)}
 .tswipe{font-weight:700;text-transform:uppercase;letter-spacing:.12em;font-size:13px;color:#26211b}
 @media (max-width:880px){.tcard2{flex:0 0 84%}.why2{padding:40px 0}.why2 h2{font-size:22px}.why2 p{font-size:16px}}
 
+
+/* base flips to light; hero/mech/guarantee/bands stay dark */
+:root{
+  --bg-0:#ffffff; --bg-1:#f7f1e8; --bg-2:#f5ecdd; --bg-bronze:#f3e4d3;
+  --ink:#26211b; --ink-soft:#5b5045; --ink-faint:#877a6c;
+  --line:rgba(0,0,0,.12); --line-soft:rgba(0,0,0,.07);
+  --head:#16120e;
+}
+.hero,.claimband,.mech,.ctaband,.returnline,.guarantee,.benefitstrip,.promobar,.mcta,.footer{--bg-0:#161210;--bg-1:#1e1815;--bg-2:#100c0a;--bg-bronze:#2a1c12;--ink:#f4ece3;--ink-soft:#c9bcae;--ink-faint:#9a8b7c;--line:rgba(244,236,227,.12);--line-soft:rgba(244,236,227,.07);--head:#ffffff;}
+.hero,.claimband,.mech,.ctaband,.returnline,.guarantee,.footer{background:var(--bg-0);color:var(--ink)}
+.benefitstrip{background:var(--bg-bronze)}
+strong,b{color:var(--head)}
+.hero h1{color:var(--head)}
+.benefitstrip .item{color:var(--head)}
+.claimband h2{color:var(--head)}
+.mech__head h2{color:var(--head)}
+.mech__block h3{color:var(--head)}
+.ctaband h2{color:var(--head)}
+.returnline p{color:var(--head)}
+.timeline__head h2{color:var(--head)}
+.stage__item h4{color:var(--head)}
+.proof__quote h2{color:var(--head)}
+.tfeat blockquote{color:var(--head)}
+.edu h2{color:var(--head)}
+.edu .kicker{color:var(--head)}
+.offer__head h2{color:var(--head)}
+.tier__name{color:var(--head)}
+.addon b{color:var(--head)}
+.guarantee h2{color:var(--head)}
+.guarantee__hero{color:var(--head)}
+.guarantee summary{color:var(--head)}
+.faq h2{color:var(--head)}
+.faq summary{color:var(--head)}
+/* legibility touch-ups on light */
+.tcard,.stage{box-shadow:0 1px 6px rgba(0,0,0,.07)}
+.edu-img{border-radius:12px;overflow:hidden;margin-top:1.6rem;aspect-ratio:16/9}
+.edu-img img{width:100%;height:100%;object-fit:cover;display:block}
+
 </style>
 
 <a class="skip" href="#main">Ir al contenido</a>
@@ -588,6 +626,7 @@ section{padding-block:clamp(3.2rem,7vw,6rem)}
     <p>Nadie te lo había dicho. Después de los 40, la piel cambia. Hace menos defensas propias. Y su aceite de siempre se pone <strong>rancio</strong>. Como el aceite de cocina que se queda fuera.</p>
     <p>Ese aceite rancio <strong>repele el agua</strong>. La espuma le pasa por encima y lo deja ahí. No es que te falte baño. Es que tu jabón no lo alcanza.</p>
     <p class="note">La ciencia ya le puso nombre: 2-nonenal. No se disuelve en agua. Por eso sigue ahí aunque te bañes. No es mugre. No es descuido. No es tu culpa.</p>
+    <figure class="edu-img"><img src="{{ 'pc-p-images-v2_lifestyle-morning-mirror.jpg' | asset_url }}" alt="Hombre de más de 40 frente al espejo en la mañana" loading="lazy"></figure>
     <figure class="vid-fig">
       <video autoplay muted loop playsinline preload="metadata" aria-label="Animación del punto ciego: el olor que tú ya no percibes" width="1280" height="720">
         <source src="{{ 'pc-clip-blindspot.mp4' | asset_url }}" type="video/mp4">
@@ -791,6 +830,7 @@ section{padding-block:clamp(3.2rem,7vw,6rem)}
         </div>
       </details>
     </div>
+    <figure class="edu-img" style="max-width:52rem;margin:1.8rem auto 0"><img src="{{ 'pc-p-images-v2_uso-regadera.jpg' | asset_url }}" alt="La barra Punto Ciego en uso en la regadera" loading="lazy"></figure>
     <p class="timeline__foot">Tienes 30 días completos para decidir. Con tu palabra basta.</p>
   </div>
 </section>
@@ -810,6 +850,7 @@ section{padding-block:clamp(3.2rem,7vw,6rem)}
 <!-- ═══ REVIEW WALL — opiniones reales del primer lote ═══ -->
 <section class="proof" id="opiniones" aria-labelledby="proof-title">
   <div class="wrap">
+    <figure class="edu-img" style="max-width:46rem;margin:0 auto 2rem"><img src="{{ 'pc-p-images-v2_gallery_gal-06-tamano.jpg' | asset_url }}" alt="El tamaño de la barra Punto Ciego en la mano" loading="lazy"></figure>
     <div class="proof__quote">
       <h2 id="proof-title">Lo que dijo el primer lote.</h2>
       <p>20 opiniones reales de compradores del primer lote de prueba. Sin filtrar, sin inventar. Las demás están repartidas a lo largo de esta página.</p>
