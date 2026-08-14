@@ -467,6 +467,33 @@ section{padding-block:clamp(3.2rem,7vw,6rem)}
  .bb-tier-img{width:46px;height:46px}
 }
 
+
+.why2{background:#fff;color:#26211b;padding:56px 0}
+.why2 .w{max-width:820px;margin:0 auto;padding:0 24px}
+.why2 .k{font-weight:700;text-transform:uppercase;letter-spacing:.14em;font-size:14px;color:#c1531a;margin:0 0 10px}
+.why2 h2{font-size:clamp(24px,3vw,32px);line-height:1.25;font-weight:800;color:#000;margin:0 0 22px;letter-spacing:0}
+.why2 .m{border-radius:12px;overflow:hidden;aspect-ratio:16/10;margin-bottom:22px}
+.why2 .m img{width:100%;height:100%;object-fit:cover;display:block}
+.why2 p{font-size:18px;line-height:1.55;margin:0 0 18px;max-width:62ch;color:#26211b}
+.why2 p:last-child{margin-bottom:0}
+.why2 strong{color:inherit}
+.tsec2{background:#fff;color:#26211b;padding:56px 0}
+.tsec2 .w{max-width:1200px;margin:0 auto;padding:0 24px}
+.tsec2 h2{font-size:clamp(24px,3vw,32px);font-weight:800;color:#000;margin:0 0 20px;letter-spacing:0}
+.tcarousel{display:flex;gap:16px;overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;padding:4px 2px 8px;margin-bottom:14px;scrollbar-width:none}
+.tcarousel::-webkit-scrollbar{display:none}
+.tcard2{flex:0 0 340px;scroll-snap-align:start;background:#f5ecdd;border-radius:14px;overflow:hidden;box-shadow:0 1px 5px rgba(0,0,0,.08)}
+.tcard2-img{width:100%;aspect-ratio:4/3.4;object-fit:cover;object-position:50% 20%;display:block}
+.tcard2-body{padding:18px 20px 20px}
+.tcard2-stars{color:#d99a26;font-size:19px;letter-spacing:3px;margin:0 0 10px}
+.tcard2 blockquote{font-size:16px;line-height:1.5;color:rgba(0,0,0,.82);margin:0 0 14px;border:0;padding:0;font-style:normal}
+.tcard2-name{font-size:15px;font-weight:600;color:#26211b;margin:0}
+.tcard2-verified{color:#2e7d32;font-weight:700}
+.tcontrols{display:flex;align-items:center;justify-content:center;gap:18px}
+.tarrow{width:48px;height:48px;border-radius:50%;border:0;background:#c1531a;color:#fff;font-size:26px;line-height:1;cursor:pointer}
+.tswipe{font-weight:700;text-transform:uppercase;letter-spacing:.12em;font-size:13px;color:#26211b}
+@media (max-width:880px){.tcard2{flex:0 0 84%}.why2{padding:40px 0}.why2 h2{font-size:22px}.why2 p{font-size:16px}}
+
 </style>
 
 <a class="skip" href="#main">Ir al contenido</a>
@@ -769,13 +796,7 @@ section{padding-block:clamp(3.2rem,7vw,6rem)}
 </section>
 
 <!-- ═══ TESTIMONIO DESTACADO — primer lote ═══ -->
-<section class="tfeat" aria-label="Opinión destacada del primer lote">
-  <div class="wrap">
-    <span class="tfeat__mark" aria-hidden="true">“</span>
-    <blockquote data-t="1">Compré por las dudas, no creí que tuviera un olor como rancio, pero lo usé y en esa semana tres personas me dijeron que olía muy bien. Le conté a mi esposa y me dijo 'sí tenías un olor raro ya desde hace algunos años, pero no quería hacerte sentir mal'.</blockquote>
-    <footer><img class="tavatar tavatar--lg" src="{{ 'pc-p-images-v2_avatars_t01.jpg' | asset_url }}" alt="" loading="lazy" width="56" height="56"><span>Jorge · Comprador del primer lote</span></footer>
-  </div>
-</section>
+<section class="tsec2" aria-label="Opiniones con foto del primer lote"><div class="w"><h2>Ellos cambiaron de jabón. Alguien más lo notó.</h2><div class="tcarousel" id="tcarousel2"><article class="tcard2"><img class="tcard2-img" src="{{ 'pc-p-images-v2_testimonials_ricardo.jpg' | asset_url }}" alt="" loading="lazy"><div class="tcard2-body"><p class="tcard2-stars" aria-label="5 estrellas">★★★★★</p><blockquote>"Mi esposa me había dicho una vez que olía 'como guardado' y la verdad me pegó en el orgullo porque soy bastante cuidadoso con mi higiene. Este jabón ha sido de las pocas cosas donde sí he visto diferencia."</blockquote><p class="tcard2-name">Ricardo M. · <span class="tcard2-verified">✓ Verificado</span></p></div></article><article class="tcard2"><img class="tcard2-img" src="{{ 'pc-p-images-v2_testimonials_mauricio.jpg' | asset_url }}" alt="" loading="lazy"><div class="tcard2-body"><p class="tcard2-stars" aria-label="5 estrellas">★★★★★</p><blockquote>"Mi esposa me dijo que tenía un olor 'raro' a pesar de ducharme dos veces al día con jabón. Gracias a Punto Ciego ese olor desapareció."</blockquote><p class="tcard2-name">Mauricio H. · <span class="tcard2-verified">✓ Verificado</span></p></div></article><article class="tcard2"><img class="tcard2-img" src="{{ 'pc-p-images-v2_testimonials_fernando.jpg' | asset_url }}" alt="" loading="lazy"><div class="tcard2-body"><p class="tcard2-stars" aria-label="5 estrellas">★★★★★</p><blockquote>"Un compañero del trabajo me preguntó hace unos días si había cambiado de loción. Me dio risa porque justo no estaba usando nada. Lo único nuevo era el jabón."</blockquote><p class="tcard2-name">Fernando C. · <span class="tcard2-verified">✓ Verificado</span></p></div></article><article class="tcard2"><img class="tcard2-img" src="{{ 'pc-p-images-v2_testimonials_javier.jpg' | asset_url }}" alt="" loading="lazy"><div class="tcard2-body"><p class="tcard2-stars" aria-label="5 estrellas">★★★★★</p><blockquote>"No sabía si yo tenía ese famoso olor porque uno mismo se acostumbra. Después de usarlo unos días le pregunté directamente a mi esposa y me dijo que sí había cambiado bastante. Ahí fue cuando me convenció."</blockquote><p class="tcard2-name">Javier S. · <span class="tcard2-verified">✓ Verificado</span></p></div></article><article class="tcard2"><img class="tcard2-img" src="{{ 'pc-p-images-v2_testimonials_hector.jpg' | asset_url }}" alt="" loading="lazy"><div class="tcard2-body"><p class="tcard2-stars" aria-label="5 estrellas">★★★★★</p><blockquote>"La primera vez no noté gran cosa. Como al cuarto o quinto día sí me di cuenta que al quitarme la camisa en la noche ya no tenía ese olor que antes se quedaba en el cuello."</blockquote><p class="tcard2-name">Héctor R. · <span class="tcard2-verified">✓ Verificado</span></p></div></article></div><div class="tcontrols"><button class="tarrow" type="button" data-dir="-1" aria-label="Anterior">‹</button><span class="tswipe">Desliza para ver más</span><button class="tarrow" type="button" data-dir="1" aria-label="Siguiente">›</button></div></div></section>
 
 <!-- ═══ CTA BAND 2 ═══ -->
 <section class="ctaband ctaband--tight">
@@ -841,7 +862,7 @@ section{padding-block:clamp(3.2rem,7vw,6rem)}
 </section>
 
 <!-- ═══ OFFER + honest urgency ═══ -->
-<section class="buybox" id="oferta" aria-labelledby="bb-title">
+<section class="why2" aria-labelledby="why2-h"><div class="w"><p class="k">Por qué la hicimos</p><h2 id="why2-h">"Con tantos jabones que prometen todo, el nuestro tenía que demostrarlo."</h2><div class="m"><img src="{{ 'pc-p-images-v2_gift-unboxing.jpg' | asset_url }}" alt="Caja de Punto Ciego abierta, con la barra a la vista" loading="lazy"></div><p>Hicimos Punto Ciego para el hombre que <strong>ya probó todo</strong> y sigue igual. El que se baña diario y aun así huele raro en la tarde. La base de esta barra lleva años vendiéndose en Estados Unidos y Japón. Nosotros la trajimos a México y le sumamos <strong>los tres frentes</strong>.</p><p>Y tiene una prueba que ningún otro jabón te ofrece: <strong>pregúntale a tu esposa</strong>. Úsala 30 días. Si ella no nota la diferencia, <strong>te quedas la barra y te devolvemos cada peso</strong>.</p></div></section><section class="buybox" id="oferta" aria-labelledby="bb-title">
   <div class="bbwrap buybox-grid">
     <div class="bb-gallery">
       <div class="bb-main">
@@ -870,7 +891,7 @@ section{padding-block:clamp(3.2rem,7vw,6rem)}
           <span class="bb-pop bb-pop--value">Mejor precio</span>
           <input type="radio" name="tier" value="kit3" data-freq="cada 90 días" data-extra=" Y el Kit baja a $509.">
           <span class="bb-radio" aria-hidden="true"></span>
-          <img class="bb-tier-img" src="{{ 'pc-l-bundle-3.jpg' | asset_url }}" alt="">
+          <img class="bb-tier-img" src="../listicle/assets/bundle-3.jpg" alt="">
           <span class="bb-tier-name"><strong>Kit 3 Frentes</strong> <span class="bb-supply">Para 3 meses</span><small>$200 por barra · te ahorras $268 vs comprarlas sueltas</small></span>
           <span class="bb-tier-price"><strong>$599</strong></span>
           <span class="bb-tier-strip">Súmale la jabonera de bambú por $99</span>
@@ -879,14 +900,14 @@ section{padding-block:clamp(3.2rem,7vw,6rem)}
           <span class="bb-pop">El más pedido</span>
           <input type="radio" name="tier" value="duo" checked data-freq="cada 2 meses" data-extra="">
           <span class="bb-radio" aria-hidden="true"></span>
-          <img class="bb-tier-img" src="{{ 'pc-l-bundle-2.jpg' | asset_url }}" alt="">
+          <img class="bb-tier-img" src="../listicle/assets/bundle-2.jpg" alt="">
           <span class="bb-tier-name"><strong>Dúo</strong> <span class="bb-supply">Para 2 meses</span><small>La segunda barra te sale en $10 · precio de lanzamiento</small></span>
           <span class="bb-tier-price"><strong>$299</strong></span>
         </label>
         <label class="bb-tier">
           <input type="radio" name="tier" value="una" data-freq="cada mes" data-extra="">
           <span class="bb-radio" aria-hidden="true"></span>
-          <img class="bb-tier-img" src="{{ 'pc-l-bundle-1.jpg' | asset_url }}" alt="">
+          <img class="bb-tier-img" src="../listicle/assets/bundle-1.jpg" alt="">
           <span class="bb-tier-name"><strong>1 barra</strong> <span class="bb-supply">Para 1 mes</span><small>Para probarla</small></span>
           <span class="bb-tier-price"><strong>$289</strong></span>
         </label>
@@ -1168,6 +1189,8 @@ function bbFreq(){
 }
 document.querySelectorAll('.bb-tier input').forEach(function(r){r.addEventListener('change',bbFreq);});
 bbFreq();
+var tc2=document.getElementById("tcarousel2");
+document.querySelectorAll(".tsec2 .tarrow").forEach(function(b){b.addEventListener("click",function(){var card=tc2.querySelector(".tcard2");tc2.scrollBy({left:(card.offsetWidth+16)*Number(b.dataset.dir),behavior:"smooth"});});});
 </script>
 
 {% schema %}
