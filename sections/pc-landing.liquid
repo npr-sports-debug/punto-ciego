@@ -79,6 +79,9 @@ strong{font-weight:700;color:inherit}
 .tcard img{width:100%;aspect-ratio:4/3.3;object-fit:cover;object-position:50% 20%}
 .tcard p{padding:16px 18px 0;font-size:16px;line-height:1.5;flex:1}
 .tcard footer{padding:12px 18px 18px;font-weight:700;font-size:14px;color:var(--brand)}
+.tcard footer small{display:block;font-weight:400;font-size:12px;color:var(--ink2);margin-top:2px}
+.closing p{margin:0 auto 14px;max-width:52ch}
+.closing .btn{margin-top:8px}
 .tcard.noimg{background:var(--dark);color:var(--on-dark);justify-content:center}
 .tcard.noimg p{font-size:17px;padding-top:24px}
 .tcard.noimg footer{color:var(--amber)}
@@ -192,7 +195,7 @@ details p{padding:0 0 16px}
 <a class="skip" href="#oferta">Ir a la oferta</a>
 
 <div class="topbar">
-  <span>Primer lote en México</span>
+  <span>Primer lote en México. Envío a todo el país.</span>
   <a href="#oferta">Ver precios →</a>
 </div>
 
@@ -204,7 +207,7 @@ details p{padding:0 0 16px}
     <div class="hero-copy">
       <p class="kicker">Hecho para hombres 40+</p>
       <h1>Después de los 40 tu piel suelta un olor que tú ya no hueles. <span>Los demás sí.</span></h1>
-      <p class="lead">No es falta de baño. Es un aceite que la piel suelta con los años. Tu jabón no lo quita. Este sí.</p>
+      <p class="lead">No es falta de baño. Es un aceite que la piel suelta con los años. Se queda pegado y se pone rancio. Tu jabón no lo quita. Este sí.</p>
       <a class="btn" href="#oferta">Probar sin riesgo</a>
       <p class="micro">Garantía 30 días. Te quedas la barra.</p>
     </div>
@@ -220,8 +223,11 @@ details p{padding:0 0 16px}
   <div class="wrap two">
     <div>
       <h2>Te bañas en la mañana. A las tres de la tarde el olor ya volvió.</h2>
-      <p>Tu nariz se acostumbra y deja de olerlo. Se llama <strong>punto ciego olfativo</strong>. Los demás sí lo huelen.</p>
-      <p>Con los años la piel suelta una grasa que se pone rancia. <strong>No es mugre. Es grasa.</strong> El agua le pasa por encima.</p>
+      <p>Y ni siquiera sudaste. Estuviste sentado en la oficina o en el coche.</p>
+      <p>Lo peor es cómo te enteras. Tu esposa te lo dice a medias. O hueles la camisa en la noche.</p>
+      <p>Tú no lo hueles. Tu nariz se acostumbra a lo que huele todo el día y deja de registrarlo. Le pasa a todos y tiene nombre: <strong>punto ciego olfativo</strong>. De ahí le pusimos el nombre a la barra.</p>
+      <p>Lo que huelen los demás no es mugre. Con los años la piel suelta una grasa distinta. Esa grasa se oxida y huele cerosa, medio rancia. <strong>Como el aceite que se quedó fuera del frasco.</strong></p>
+      <p><strong>No estás sucio. Tu piel cambió y tu jabón no.</strong></p>
     </div>
     <figure class="fig"><img src="{{ 'pc3-mirror.jpg' | asset_url }}" alt="Hombre de más de 40 frente al espejo en la mañana" width="1000" height="1000"></figure>
   </div>
@@ -233,11 +239,13 @@ details p{padding:0 0 16px}
     <figure class="fig"><img src="{{ 'pc3-work.jpg' | asset_url }}" alt="Hombre al final del día, con la camisa puesta" width="1000" height="1000"></figure>
     <div>
       <h2>Nada de lo que tienes en el baño lo quita</h2>
+      <p>Si ya probaste de todo y sigues igual, no es que no le eches ganas. Nada de eso va por el aceite.</p>
       <ul class="x">
-        <li><strong>Tu jabón</strong> está hecho para la mugre. Esto no es mugre.</li>
-        <li><strong>El antibacterial</strong> reseca. El olor vuelve peor.</li>
-        <li><strong>El desodorante</strong> no llega a espalda, pecho ni cuello.</li>
+        <li><strong>Tu jabón</strong> está hecho para la mugre. Esto no es mugre. Hace espuma, se enjuaga y deja el aceite justo donde estaba.</li>
+        <li><strong>El antibacterial</strong> reseca y se lleva hasta las bacterias buenas. A las semanas el olor vuelve peor. Y el perfumado nomás se encima: huele más raro, no menos.</li>
+        <li><strong>El desodorante</strong> no llega. El olor también vive en la espalda, el pecho y el cuello. Justo donde se recarga la camisa.</li>
       </ul>
+      <p><strong>Por eso te tallas más fuerte y sigue igual.</strong> Nada le está pegando al aceite.</p>
     </div>
   </div>
 </section>
@@ -246,14 +254,15 @@ details p{padding:0 0 16px}
 <section class="block dark" id="frentes">
   <div class="wrap">
     <h2 class="center">Punto Ciego va por los tres frentes a la vez</h2>
-    <p class="center lead">Sudor, bacterias y ese aceite. Todo lo que probaste iba a uno solo.</p>
+    <p class="center lead">El olor viene de tres lados: sudor, bacterias y ese aceite. Todo lo que probaste iba a uno solo. Por eso volvía.</p>
     <div class="fronts">
-      <article><img src="{{ 'pc3-caqui.jpg' | asset_url }}" alt="Caqui y té verde" width="900" height="900"><h3>1. Neutraliza</h3><p>Té verde y caqui. No lo tapan, lo cambian.</p></article>
-      <article><img src="{{ 'pc3-zinc.jpg' | asset_url }}" alt="Óxido de zinc en polvo" width="900" height="900"><h3>2. Baja la fuente</h3><p>Zinc, con estudio en personas. Menos bacteria, menos olor.</p></article>
-      <article><img src="{{ 'pc3-carbon.jpg' | asset_url }}" alt="Carbón de bambú" width="900" height="900"><h3>3. Atrapa y enjuaga</h3><p>Carbón de bambú. Se va por la coladera.</p></article>
+      <article><img src="{{ 'pc3-caqui.jpg' | asset_url }}" alt="Caqui y té verde" width="900" height="900"><h3>1. Neutraliza</h3><p>Té verde y caqui. No tapan el olor con perfume. Cambian el compuesto que huele. Por eso no te queda un olor encima de otro.</p></article>
+      <article><img src="{{ 'pc3-zinc.jpg' | asset_url }}" alt="Óxido de zinc en polvo" width="900" height="900"><h3>2. Baja la fuente</h3><p>Óxido de zinc. Es el único de los tres con un estudio hecho en personas. Bajó la bacteria que produce el olor. Y las personas notaron menos olor en su propio cuerpo.</p></article>
+      <article><img src="{{ 'pc3-carbon.jpg' | asset_url }}" alt="Carbón de bambú" width="900" height="900"><h3>3. Atrapa y enjuaga</h3><p>Carbón de bambú. Levanta el aceite pegado y se va por la coladera. No se queda ahí esperando la tarde.</p></article>
     </div>
     <figure class="fig wide"><img src="{{ 'pc3-flatlay.jpg' | asset_url }}" alt="La barra Punto Ciego rodeada de sus tres frentes" width="1000" height="560"></figure>
     <p class="center"><strong>Tres frentes. Una barra. Un baño.</strong></p>
+    <p class="center sub">Y como es barra, llega a la espalda, al pecho y al cuello. No nomás a las axilas.</p>
   </div>
 </section>
 
@@ -262,8 +271,9 @@ details p{padding:0 0 16px}
   <div class="wrap two">
     <div>
       <h2>Misma rutina. Otra barra.</h2>
-      <p>Te bañas igual. Huele a cedro y ámbar. Dura un mes.</p>
-      <p>Y la prueba es fácil: <strong>pregúntale a tu esposa a los 15 días.</strong></p>
+      <p>Sin gel ni pasos extra. Te tallas igual, te enjuagas igual, nomás con otra barra.</p>
+      <p>Son 120 gramos y te dura un mes. Huele a cedro negro y ámbar. Nada dulce, nada floral. Huele a jabón de hombre.</p>
+      <p>Y la prueba es fácil. No te fíes de tu nariz, que para esto no sirve. <strong>Pregúntale a tu esposa a los 15 días.</strong> Ella te dice la verdad antes que nadie.</p>
     </div>
     <figure class="fig"><img src="{{ 'pc3-regadera.jpg' | asset_url }}" alt="La barra Punto Ciego en la regadera" width="1000" height="1000"></figure>
   </div>
@@ -273,13 +283,13 @@ details p{padding:0 0 16px}
 <section class="block tint" id="opiniones">
   <div class="wrap">
     <h2 class="center">Ellos cambiaron de jabón. Alguien más lo notó.</h2>
-    <p class="center sub">Primer lote. Tal cual nos lo mandaron.</p>
+    <p class="center sub">Hombres del primer lote que se bañan diario y aun así traían el problema. Sus palabras, tal cual nos las mandaron.</p>
     <div class="tgrid">
-      <article class="tcard"><img src="{{ 'pc3-t-ricardo.jpg' | asset_url }}" alt="" width="640" height="780"><p>"Mi esposa me había dicho que olía 'como guardado'. Con este jabón sí vi diferencia."</p><footer>Ricardo M.</footer></article>
-      <article class="tcard"><img src="{{ 'pc3-t-fernando.jpg' | asset_url }}" alt="" width="640" height="780"><p>"Un compañero me preguntó si había cambiado de loción. No estaba usando nada. Lo único nuevo era el jabón."</p><footer>Fernando C.</footer></article>
-      <article class="tcard"><img src="{{ 'pc3-t-javier.jpg' | asset_url }}" alt="" width="640" height="780"><p>"Le pregunté directo a mi esposa y me dijo que sí había cambiado bastante. Ahí fue cuando me convenció."</p><footer>Javier S.</footer></article>
-      <article class="tcard"><img src="{{ 'pc3-t-hector.jpg' | asset_url }}" alt="" width="640" height="780"><p>"Al quinto día me quité la camisa en la noche y ya no tenía ese olor en el cuello."</p><footer>Héctor R.</footer></article>
-      <article class="tcard noimg"><p>"Mi esposa me dijo que olía 'raro' aunque me bañaba dos veces al día. Ese olor desapareció."</p><footer>Mauricio H.</footer></article>
+      <article class="tcard"><img src="{{ 'pc3-t-ricardo.jpg' | asset_url }}" alt="" width="640" height="780"><p>"Mi esposa me había dicho una vez que olía 'como guardado' y la verdad me pegó en el orgullo porque soy bastante cuidadoso con mi higiene. Este jabón ha sido de las pocas cosas donde sí he visto diferencia."</p><footer>Ricardo M. <small>Usuario real · Primer lote</small></footer></article>
+      <article class="tcard"><img src="{{ 'pc3-t-fernando.jpg' | asset_url }}" alt="" width="640" height="780"><p>"Un compañero del trabajo me preguntó hace unos días si había cambiado de loción. Me dio risa porque justo no estaba usando nada. Lo único nuevo era el jabón."</p><footer>Fernando C. <small>Usuario real · Primer lote</small></footer></article>
+      <article class="tcard"><img src="{{ 'pc3-t-javier.jpg' | asset_url }}" alt="" width="640" height="780"><p>"No sabía si yo tenía ese famoso olor porque uno mismo se acostumbra. Después de usarlo unos días le pregunté directamente a mi esposa y me dijo que sí había cambiado bastante. Ahí fue cuando me convenció."</p><footer>Javier S. <small>Usuario real · Primer lote</small></footer></article>
+      <article class="tcard"><img src="{{ 'pc3-t-hector.jpg' | asset_url }}" alt="" width="640" height="780"><p>"La primera vez no noté gran cosa. Como al cuarto o quinto día sí me di cuenta que al quitarme la camisa en la noche ya no tenía ese olor que antes se quedaba en el cuello."</p><footer>Héctor R. <small>Usuario real · Primer lote</small></footer></article>
+      <article class="tcard"><img src="{{ 'pc3-t-mauricio.jpg' | asset_url }}" alt="Mauricio, usuario del primer lote, con su barra Punto Ciego" width="640" height="780" loading="lazy"><p>"Mi esposa me dijo que tenía un olor 'raro' a pesar de ducharme dos veces al día con jabón. Gracias a Punto Ciego ese olor desapareció."</p><footer>Mauricio H. <small>Usuario real · Primer lote</small></footer></article>
     </div>
   </div>
 </section>
@@ -300,17 +310,17 @@ details p{padding:0 0 16px}
     <form class="bb-panel" id="bb-form" action="/cart/add" method="post">
       <p class="eyebrow">Primer lote en México · Garantía 30 días</p>
       <h2>Jabón Corporal Punto Ciego</h2>
-      <p class="bb-desc"><strong>Hecho para el olor de después de los 40.</strong> Cedro negro y ámbar. 120 g.</p>
+      <p class="bb-desc"><strong>Hecho para el olor que aparece después de los 40.</strong> Va por el aceite que tu jabón deja pasar. También en espalda, pecho y cuello. Cedro negro y ámbar, 120 g. El Dúo te sale en menos de 5 pesos al día.</p>
       <p class="bb-divider"><span>Compra más, ahorra más</span></p>
       <div class="tiers">
         <label class="tier"><span class="pop dark-pop">Mejor precio</span><input type="radio" name="id" value="VARIANT_KIT3" data-freq="cada 90 días" data-price="599" data-label="Kit 3 Frentes"><span class="radio"></span><img src="{{ 'pc3-bundle-3.jpg' | asset_url }}" alt="" width="56" height="56"><span class="tname"><strong>Kit 3 Frentes</strong> <em>Para 3 meses</em><small>$200 por barra · te ahorras $268</small></span><span class="tprice">$599</span></label>
         <label class="tier"><span class="pop">El más pedido</span><input type="radio" name="id" value="VARIANT_DUO" checked data-freq="cada 2 meses" data-price="299" data-label="Dúo"><span class="radio"></span><img src="{{ 'pc3-bundle-2.jpg' | asset_url }}" alt="" width="56" height="56"><span class="tname"><strong>Dúo</strong> <em>Para 2 meses</em><small>$299 los dos · te ahorras $279 · precio de lanzamiento</small></span><span class="tprice">$299</span></label>
         <label class="tier"><input type="radio" name="id" value="VARIANT_UNA" data-freq="cada mes" data-price="289" data-label="1 barra"><span class="radio"></span><img src="{{ 'pc3-bundle-1.jpg' | asset_url }}" alt="" width="56" height="56"><span class="tname"><strong>1 barra</strong> <em>Para 1 mes</em><small>Para probarla</small></span><span class="tprice">$289</span></label>
       </div>
-      <label class="addon"><input type="checkbox" name="addon" value="VARIANT_JABONERA"><span class="check"></span><span><strong>Súmale la jabonera de bambú</strong><small>Escurre la barra y rinde más. +$99</small></span></label>
-      <label class="addon sub"><input type="checkbox" name="subscribe" value="1"><span class="check"></span><span><strong>Que el olor a viejito no vuelva porque se te acabó el jabón.</strong><small id="sub-freq">Te la reenviamos cada 2 meses. Cancelas en un clic.</small></span></label>
+      <label class="addon"><input type="checkbox" name="addon" value="VARIANT_JABONERA"><span class="check"></span><span><strong>Súmale la jabonera de bambú</strong><small>Escurre la barra para que no se aguade y te rinda el mes. +$99</small></span></label>
+      <label class="addon sub"><input type="checkbox" name="subscribe" value="1"><span class="check"></span><span><strong>Que el olor a viejito no vuelva porque se te acabó el jabón.</strong><small id="sub-freq">Te la reenviamos cada 2 meses. Cancelas en un clic, sin cargos sorpresa.</small></span></label>
       <button class="btn big" type="submit" id="bb-cta">Agregar al carrito · $299</button>
-      <p class="bb-note">Pagas con tarjeta o en OXXO. Garantía 30 días: te quedas la barra y te devolvemos cada peso.</p>
+      <p class="bb-note">Pagas con tarjeta o en efectivo en OXXO. Envío a todo México en 3 a 6 días hábiles. Garantía 30 días: te quedas la barra y te devolvemos cada peso.</p>
       <div class="pay"><span class="pb oxxo">OXXO</span><span class="pb visa">VISA</span><span class="pb mc"><i></i><i></i></span></div>
     </form>
   </div>
@@ -321,7 +331,9 @@ details p{padding:0 0 16px}
   <div class="wrap narrow center">
     <div class="stamp">30 días</div>
     <h2>Quédate la barra.</h2>
-    <p class="lead">30 días. Si no te encanta, te quedas la barra y te devolvemos cada peso. Sin letra chica.</p>
+    <p class="lead">Úsala 30 días. Báñate igual que siempre. A los 15 días pregúntale a tu esposa.</p>
+    <p class="lead">Si ella no nota la diferencia, escríbenos. Te devolvemos cada peso y te quedas la barra. Sin letra chica, sin cuestionario, sin que te hagan sentir mal.</p>
+    <p class="lead"><strong>El riesgo lo ponemos nosotros.</strong> Tú nomás arriesgas un mes bañándote con otro jabón.</p>
     <a class="btn" href="#oferta">Empezar sin riesgo</a>
   </div>
 </section>
@@ -330,12 +342,24 @@ details p{padding:0 0 16px}
 <section class="block">
   <div class="wrap narrow">
     <h2 class="center">Lo que te has de estar preguntando</h2>
-    <details><summary>El jabón se enjuaga. ¿De qué sirve contra el olor?</summary><p>El olor de los 40 vive en la grasa de la piel. El jabón normal no la toca. Punto Ciego trae tres activos que sí la tocan. Uno neutraliza el olor. Otro baja la bacteria que lo produce. Otro lo atrapa y se va con el agua.</p></details>
-            <details><summary>¿Es como los jabones "milagro" de Facebook?</summary><p>No prometemos milagros. Prometemos 30 días y una barra que te quedas si no te encanta.</p></details>
-    <details><summary>¿Cómo pago y cuándo llega?</summary><p>Pagas con tarjeta o en efectivo en OXXO. Enviamos a todo México. Te llega en 3 a 6 días hábiles.</p></details>
+    <details><summary>El jabón se enjuaga. ¿De qué sirve contra el olor?</summary><p>El olor de los 40 no está en la mugre. Vive en la grasa de la piel, y el jabón normal ni la toca. Punto Ciego trae tres activos que sí la tocan. Uno neutraliza el compuesto que huele. Otro baja la bacteria que lo produce. Otro lo atrapa para que se vaya con el agua.</p></details>
+    <details><summary>¿En cuánto tiempo lo voy a notar?</summary><p>Varía. Hay quien lo nota al cuarto o quinto día, al quitarse la camisa en la noche. Acuérdate: tú eres el peor juez de tu propio olor. Por eso te decimos que le preguntes a tu esposa a los 15 días. Y tienes 30 para decidir.</p></details>
+    <details><summary>¿Es como los jabones "milagro" de Facebook?</summary><p>No prometemos milagros ni te inventamos un doctor que no existe. La base de esta barra lleva años vendiéndose en Estados Unidos y Japón. Nosotros la trajimos a México y le sumamos los tres frentes. Lo que sostenemos: 30 días y una barra que te quedas si no te encanta.</p></details>
+    <details><summary>¿Cómo huele y cómo queda la piel?</summary><p>Cedro negro y ámbar. Nada dulce, nada floral, nada que se pelee con tu loción. Te tallas y te enjuagas como con cualquier jabón. Desde el primer baño la piel se siente fresca.</p></details>
+    <details><summary>¿Cómo pago y cuándo llega?</summary><p>Pagas con tarjeta o en efectivo en OXXO, antes de que salga tu envío. Enviamos a todo México y te llega en 3 a 6 días hábiles.</p></details>
   </div>
 </section>
 
+
+<!-- CIERRE -->
+<section class="closing">
+  <div class="wrap narrow center">
+    <p class="big-line">El olor no se va porque te talles más fuerte. <strong>Se va cuando algo por fin lo toca.</strong></p>
+    <p>Un mes. Otra barra. La misma regadera de siempre. Y la única opinión que cuenta te la va a dar tu esposa, no tu nariz.</p>
+    <p class="sub">La promesa sigue igual: <strong>30 días, te quedas la barra, te devolvemos cada peso</strong>.</p>
+    <a class="btn" href="#oferta">Quiero la mía, 30 días de garantía</a>
+  </div>
+</section>
 
 </main>
 
@@ -361,7 +385,7 @@ details p{padding:0 0 16px}
     var t=form.querySelector('input[name=id]:checked');if(!t)return;
     var price=+t.dataset.price+(form.querySelector('input[name=addon]').checked?99:0);
     cta.textContent='Agregar al carrito · $'+price;
-    freq.textContent='Te la reenviamos '+t.dataset.freq+'. Cancelas en un clic.';
+    freq.textContent='Te la reenviamos '+t.dataset.freq+'. Cancelas en un clic, sin cargos sorpresa.';
     sp.textContent='$'+t.dataset.price;sl.textContent=t.dataset.label;
   }
   form.addEventListener('change',sync);sync();
