@@ -529,8 +529,7 @@ h1{font-family:var(--fd);font-weight:800;font-size:clamp(32px,5vw,54px);line-hei
           <span><strong>Que el 'olor a viejito' no vuelva porque se te acabó el jabón.</strong><small id="bb-sub-freq">Te la reenviamos cada 2 meses. Cancelas en un clic, sin cargos sorpresa.</small></span>
         </label>
         <p class="bb-pill">Nos cuesta menos enviar todo junto. Ese ahorro es tuyo cuando llevas más.</p>
-        <!-- checkout URL pending: wire to product page when it exists -->
-        <a class="btn bb-cta" href="#">Agregar al carrito</a>
+        <a class="btn bb-cta" id="bb-cta" href="/cart/40861322805377:1">Agregar al carrito</a>
         <p class="bb-note">Garantía 30 días: si no te encanta, te quedas la barra y te devolvemos cada peso.</p>
         <div class="pay-badges bb-chips" aria-label="Formas de pago: OXXO, Visa y Mastercard">
           <span class="pay-badge" role="img" aria-label="OXXO"><svg viewBox="0 0 48 30"><rect x="2" y="4" width="44" height="22" rx="3" fill="#e8b70a"/><rect x="2" y="9.5" width="44" height="11" fill="#d61118"/><text x="24" y="18.6" text-anchor="middle" font-family="Arial, sans-serif" font-weight="900" font-size="9.5" fill="#ffffff" letter-spacing="0.5">OXXO</text></svg></span>
@@ -600,8 +599,14 @@ function bbFreq(){
   if(!sel)return;
   document.getElementById('bb-sub-freq').textContent='Te la reenviamos '+sel.dataset.freq+'.'+(sel.dataset.extra||'')+' Cancelas en un clic, sin cargos sorpresa.';
 }
-document.querySelectorAll('.bb-tier input').forEach(function(r){r.addEventListener('change',bbFreq);});
-bbFreq();
+var TIER_IDS={kit3:'40861322838145',duo:'40861322805377',una:'40861322772609'};
+function bbCta(){
+  var sel=document.querySelector('.bb-tier input:checked');
+  if(!sel)return;
+  document.getElementById('bb-cta').href='/cart/'+TIER_IDS[sel.value]+':1';
+}
+document.querySelectorAll('.bb-tier input').forEach(function(r){r.addEventListener('change',function(){bbFreq();bbCta();});});
+bbFreq();bbCta();
 </script>
 
 
