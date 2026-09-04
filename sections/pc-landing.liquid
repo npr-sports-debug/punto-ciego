@@ -389,9 +389,27 @@ details p{padding:0 0 16px}
     sp.textContent='$'+t.dataset.price;sl.textContent=t.dataset.label;
   }
   form.addEventListener('change',sync);sync();
+  var SELLING_PLANS={};
   form.addEventListener('submit',function(e){
+    e.preventDefault();
     var t=form.querySelector('input[name=id]:checked');
-    if(!t||t.value.indexOf('VARIANT_')===0){e.preventDefault();alert('Checkout en conexión. Escríbenos por WhatsApp para pedir.');}
+    if(!t)return;
+    var items=[{id:Number(t.value),quantity:1}];
+    var sub=form.querySelector('input[name=subscribe]');
+    var plan=SELLING_PLANS[t.value];
+    if(sub&&sub.checked&&plan){items[0].selling_plan=Number(plan);}
+    var addon=form.querySelector('input[name=addon]');
+    if(addon&&addon.checked){items.push({id:Number(addon.value),quantity:1});}
+    cta.disabled=true;cta.textContent='Un momento...';
+    fetch('/cart/clear.js',{method:'POST'}).then(function(){
+      return fetch('/cart/add.js',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({items:items})});
+    }).then(function(r){
+      if(!r.ok)throw new Error('add failed');
+      window.location.href='/checkout';
+    }).catch(function(){
+      cta.disabled=false;cta.textContent='Agregar al carrito';
+      window.location.href='/cart/'+t.value+':1';
+    });
   });
   document.querySelectorAll('.bb-thumbs button').forEach(function(b){b.addEventListener('click',function(){document.getElementById('bb-main').src=b.dataset.img;document.querySelectorAll('.bb-thumbs button').forEach(function(x){x.classList.remove('is-active');});b.classList.add('is-active');});});
   var sticky=document.getElementById('sticky'),hero=document.querySelector('.hero'),offer=document.getElementById('oferta');

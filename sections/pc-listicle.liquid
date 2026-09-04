@@ -600,13 +600,30 @@ function bbFreq(){
   document.getElementById('bb-sub-freq').textContent='Te la reenviamos '+sel.dataset.freq+'.'+(sel.dataset.extra||'')+' Cancelas en un clic, sin cargos sorpresa.';
 }
 var TIER_IDS={kit3:'40861322838145',duo:'40861322805377',una:'40861322772609'};
-function bbCta(){
+var SELLING_PLANS={};
+document.querySelectorAll('.bb-tier input').forEach(function(r){r.addEventListener('change',bbFreq);});
+bbFreq();
+var cta=document.getElementById('bb-cta');
+cta.addEventListener('click',function(e){
+  e.preventDefault();
   var sel=document.querySelector('.bb-tier input:checked');
   if(!sel)return;
-  document.getElementById('bb-cta').href='/cart/'+TIER_IDS[sel.value]+':1';
-}
-document.querySelectorAll('.bb-tier input').forEach(function(r){r.addEventListener('change',function(){bbFreq();bbCta();});});
-bbFreq();bbCta();
+  var vid=TIER_IDS[sel.value];
+  var item={id:Number(vid),quantity:1};
+  var sub=document.querySelector('.bb-subscribe input');
+  var plan=SELLING_PLANS[vid];
+  if(sub&&sub.checked&&plan){item.selling_plan=Number(plan);}
+  cta.textContent='Un momento...';
+  fetch('/cart/clear.js',{method:'POST'}).then(function(){
+    return fetch('/cart/add.js',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({items:[item]})});
+  }).then(function(r){
+    if(!r.ok)throw new Error('add failed');
+    window.location.href='/checkout';
+  }).catch(function(){
+    cta.textContent='Agregar al carrito';
+    window.location.href='/cart/'+vid+':1';
+  });
+});
 </script>
 
 
