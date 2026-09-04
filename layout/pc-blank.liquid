@@ -3,7 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>{{ page_title }}</title>
+  <title>{% if template == 'index' %}Jabón Corporal Punto Ciego | El olor que solo tú no hueles{% else %}{{ page_title }}{% endif %}</title>
+  <meta name="description" content="Después de los 40 tu piel suelta un olor que tú ya no hueles. Punto Ciego va por los tres frentes. Garantía 30 días, te quedas la barra.">
   {{ content_for_header }}
 </head>
 <body>
