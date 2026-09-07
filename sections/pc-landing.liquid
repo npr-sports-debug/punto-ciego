@@ -317,7 +317,7 @@ details p{padding:0 0 16px}
         <label class="tier"><span class="pop">El más pedido</span><input type="radio" name="id" value="40861322805377" checked data-freq="cada 2 meses" data-price="299" data-label="Dúo"><span class="radio"></span><img src="{{ 'pc3-bundle-2.jpg' | asset_url }}" alt="" width="56" height="56"><span class="tname"><strong>Dúo</strong> <em>Para 2 meses</em><small>$299 los dos · te ahorras $279 · precio de lanzamiento</small></span><span class="tprice">$299</span></label>
         <label class="tier"><input type="radio" name="id" value="40861322772609" data-freq="cada mes" data-price="289" data-label="1 barra"><span class="radio"></span><img src="{{ 'pc3-bundle-1.jpg' | asset_url }}" alt="" width="56" height="56"><span class="tname"><strong>1 barra</strong> <em>Para 1 mes</em><small>Para probarla</small></span><span class="tprice">$289</span></label>
       </div>
-      <label class="addon sub"><input type="checkbox" name="subscribe" value="1"><span class="check"></span><span><strong>Que el olor a viejito no vuelva porque se te acabó el jabón.</strong><small id="sub-freq">Te la reenviamos cada 2 meses. Cancelas en un clic, sin cargos sorpresa.</small></span></label>
+      <label class="addon sub"><input type="checkbox" name="subscribe" value="1"><span class="check"></span><span><strong>Que el olor a viejito no vuelva porque se te acabó el jabón.</strong><small id="sub-freq">Te la reenviamos cada mes con 20% de descuento. Cancelas en un clic, sin cargos sorpresa.</small></span></label>
       <button class="btn big" type="submit" id="bb-cta">Agregar al carrito · $299</button>
       <p class="bb-note">Pagas con tarjeta o en efectivo en OXXO. Envío a todo México en 3 a 6 días hábiles. Garantía 30 días: te quedas la barra y te devolvemos cada peso.</p>
       <div class="pay"><span class="pb oxxo">OXXO</span><span class="pb visa">VISA</span><span class="pb mc"><i></i><i></i></span></div>
@@ -384,11 +384,11 @@ details p{padding:0 0 16px}
     var t=form.querySelector('input[name=id]:checked');if(!t)return;
     var price=+t.dataset.price;
     cta.textContent='Agregar al carrito · $'+price;
-    freq.textContent='Te la reenviamos '+t.dataset.freq+'. Cancelas en un clic, sin cargos sorpresa.';
+    freq.textContent='Te la reenviamos cada mes con 20% de descuento. Cancelas en un clic, sin cargos sorpresa.';
     sp.textContent='$'+t.dataset.price;sl.textContent=t.dataset.label;
   }
   form.addEventListener('change',sync);sync();
-  var SELLING_PLANS={};
+  var SELLING_PLANS={'40861322838145':12395675777,'40861322805377':12395675777,'40861322772609':12395675777};
   form.addEventListener('submit',function(e){
     e.preventDefault();
     var t=form.querySelector('input[name=id]:checked');

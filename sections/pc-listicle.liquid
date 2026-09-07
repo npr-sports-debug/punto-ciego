@@ -500,7 +500,7 @@ h1{font-family:var(--fd);font-weight:800;font-size:clamp(32px,5vw,54px);line-hei
         <div class="bb-tiers">
           <label class="bb-tier">
             <span class="bb-pop bb-pop--value">Mejor precio</span>
-            <input type="radio" name="tier" value="kit3" data-freq="cada 90 días" data-extra=" Y el Kit baja a $509.">
+            <input type="radio" name="tier" value="kit3" data-freq="cada mes" data-extra=" Y el Kit te sale en $479.">
             <span class="bb-radio" aria-hidden="true"></span>
             <img class="bb-tier-img" src="{{ 'pc-l2-bundle-3.jpg' | asset_url }}" alt="">
             <span class="bb-tier-name"><strong>Compra 2, llévate 1 gratis</strong> <span class="bb-supply">Para 3 meses</span><small>Kit 3 Frentes</small></span>
@@ -508,14 +508,14 @@ h1{font-family:var(--fd);font-weight:800;font-size:clamp(32px,5vw,54px);line-hei
           </label>
           <label class="bb-tier is-popular">
             <span class="bb-pop">El más pedido</span>
-            <input type="radio" name="tier" value="duo" checked data-freq="cada 2 meses" data-extra="">
+            <input type="radio" name="tier" value="duo" checked data-freq="cada mes" data-extra=" El Dúo te sale en $239.">
             <span class="bb-radio" aria-hidden="true"></span>
             <img class="bb-tier-img" src="{{ 'pc-l2-bundle-2.jpg' | asset_url }}" alt="">
             <span class="bb-tier-name"><strong>Dúo</strong> <span class="bb-supply">Para 2 meses</span><small>La segunda barra te sale en $10 · precio de lanzamiento</small></span>
             <span class="bb-tier-price"><strong>$299</strong></span>
           </label>
           <label class="bb-tier">
-            <input type="radio" name="tier" value="una" data-freq="cada mes" data-extra="">
+            <input type="radio" name="tier" value="una" data-freq="cada mes" data-extra=" La barra te sale en $231.">
             <span class="bb-radio" aria-hidden="true"></span>
             <img class="bb-tier-img" src="{{ 'pc-l2-bundle-1.jpg' | asset_url }}" alt="">
             <span class="bb-tier-name"><strong>1 barra</strong> <span class="bb-supply">Para 1 mes</span><small>Para probarla</small></span>
@@ -525,7 +525,7 @@ h1{font-family:var(--fd);font-weight:800;font-size:clamp(32px,5vw,54px);line-hei
         <label class="bb-subscribe">
           <input type="checkbox" name="reabastecer">
           <span class="bb-check" aria-hidden="true"></span>
-          <span><strong>Que el 'olor a viejito' no vuelva porque se te acabó el jabón.</strong><small id="bb-sub-freq">Te la reenviamos cada 2 meses. Cancelas en un clic, sin cargos sorpresa.</small></span>
+          <span><strong>Que el 'olor a viejito' no vuelva porque se te acabó el jabón.</strong><small id="bb-sub-freq">Te la reenviamos cada mes con 20% de descuento. Cancelas en un clic, sin cargos sorpresa.</small></span>
         </label>
         <p class="bb-pill">Nos cuesta menos enviar todo junto. Ese ahorro es tuyo cuando llevas más.</p>
         <a class="btn bb-cta" id="bb-cta" href="/cart/40861322805377:1">Agregar al carrito</a>
@@ -596,10 +596,10 @@ document.querySelectorAll('.bb-thumb').forEach(function(b){
 function bbFreq(){
   var sel=document.querySelector('.bb-tier input:checked');
   if(!sel)return;
-  document.getElementById('bb-sub-freq').textContent='Te la reenviamos '+sel.dataset.freq+'.'+(sel.dataset.extra||'')+' Cancelas en un clic, sin cargos sorpresa.';
+  document.getElementById('bb-sub-freq').textContent='Te la reenviamos cada mes con 20% de descuento.'+(sel.dataset.extra||'')+' Cancelas en un clic, sin cargos sorpresa.';
 }
 var TIER_IDS={kit3:'40861322838145',duo:'40861322805377',una:'40861322772609'};
-var SELLING_PLANS={};
+var SELLING_PLANS={'40861322838145':12395675777,'40861322805377':12395675777,'40861322772609':12395675777};
 document.querySelectorAll('.bb-tier input').forEach(function(r){r.addEventListener('change',bbFreq);});
 bbFreq();
 var cta=document.getElementById('bb-cta');
