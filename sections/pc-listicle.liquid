@@ -180,6 +180,10 @@ h1{font-family:var(--fd);font-weight:800;font-size:clamp(32px,5vw,54px);line-hei
 .bb-pill{text-align:center;font-size:12px;font-weight:700;color:var(--muted);margin:10px 0 12px}
 .bb-cta{width:100%;font-size:24px;min-height:60px}
 .bb-note{text-align:center;font-size:15px;line-height:1.45;color:var(--body);margin-top:10px}
+.bb-ship-box{display:grid;grid-template-columns:auto 1fr;align-items:center;gap:12px;background:#e9f4e1;border:2px solid #8fbf74;border-radius:12px;padding:12px 16px;margin-top:12px}
+.bb-ship-ico{font-size:28px;line-height:1}
+.bb-ship-txt strong{display:block;font-family:var(--fd);font-weight:700;font-size:16px;color:#26591c;line-height:1.3}
+.bb-ship-txt small{display:block;font-size:13.5px;color:#41703a;margin-top:2px}
 .pay-badges{display:flex;justify-content:center;gap:8px;margin-top:12px}
 .pay-badge{width:54px;height:34px;border:1px solid rgba(0,0,0,.14);border-radius:6px;display:inline-flex;align-items:center;justify-content:center;background:#fff;overflow:hidden}
 .pay-badge svg{width:100%;height:100%}
@@ -241,6 +245,10 @@ h1{font-family:var(--fd);font-weight:800;font-size:clamp(32px,5vw,54px);line-hei
   .bb-desc{font-size:15px}
   .bb-cta{font-size:16px;min-height:52px}
   .bb-note{font-size:13px}
+  .bb-ship-box{padding:10px 12px;gap:10px}
+  .bb-ship-ico{font-size:24px}
+  .bb-ship-txt strong{font-size:14.5px}
+  .bb-ship-txt small{font-size:12.5px}
   .closing-line{font-size:30px}
   .reason-body .btn{width:100%}
   .buybox-grid{grid-template-columns:1fr;gap:18px}
@@ -528,7 +536,7 @@ h1{font-family:var(--fd);font-weight:800;font-size:clamp(32px,5vw,54px);line-hei
         </label>
         <p class="bb-pill">Nos cuesta menos enviar todo junto. Ese ahorro es tuyo cuando llevas más.</p>
         <a class="btn bb-cta" id="bb-cta" href="/cart/40861322805377:1">Agregar al carrito</a>
-        <p class="bb-note bb-ship"><strong>Enviamos en menos de 24 horas</strong> por DHL o Estafeta, desde Ciudad de México.</p>
+        <div class="bb-ship-box"><span class="bb-ship-ico">🚚</span><span class="bb-ship-txt"><strong>⚡ Enviamos en menos de 24 horas</strong><small>Por DHL o Estafeta, desde Ciudad de México 📦</small></span></div>
         <p class="bb-note">Garantía 30 días: si no te encanta, te quedas la barra y te devolvemos cada peso.</p>
         <div class="pay-badges bb-chips" aria-label="Formas de pago: OXXO, Visa y Mastercard">
           <span class="pay-badge" role="img" aria-label="OXXO"><svg viewBox="0 0 48 30"><rect x="2" y="4" width="44" height="22" rx="3" fill="#e8b70a"/><rect x="2" y="9.5" width="44" height="11" fill="#d61118"/><text x="24" y="18.6" text-anchor="middle" font-family="Arial, sans-serif" font-weight="900" font-size="9.5" fill="#ffffff" letter-spacing="0.5">OXXO</text></svg></span>
