@@ -502,31 +502,31 @@ h1{font-family:var(--fd);font-weight:800;font-size:clamp(32px,5vw,54px);line-hei
       <div class="bb-panel">
         <p class="bb-eyebrow">Primer lote en México · Garantía 30 días</p>
         <h2 id="bb-title">Jabón Corporal Punto Ciego</h2>
-        <p class="bb-desc"><strong>Hecho para el olor que aparece después de los 40.</strong> Neutraliza el aceite que tu jabón deja pasar. También en espalda, pecho y cuello. Cedro negro y ámbar, 120 g. <strong>El Dúo te sale en menos de 5 pesos al día.</strong></p>
+        <p class="bb-desc"><strong>Hecho para el olor que aparece después de los 40.</strong> Neutraliza el aceite que tu jabón deja pasar. También en espalda, pecho y cuello. Cedro negro y ámbar, 120 g. <strong>El pack de 5 te sale en menos de 5 pesos al día.</strong></p>
         <p class="bb-divider"><span>Compra más, ahorra más</span></p>
         <div class="bb-tiers">
           <label class="bb-tier">
             <span class="bb-pop bb-pop--value">Mejor precio</span>
-            <input type="radio" name="tier" value="kit3" data-freq="cada mes" data-extra=" Y el Kit te sale en $479.">
+            <input type="radio" name="tier" value="b8" data-extra=" El pack de 8 te sale en $719.">
             <span class="bb-radio" aria-hidden="true"></span>
             <img class="bb-tier-img" src="{{ 'pc-l2-bundle-3.jpg' | asset_url }}" alt="">
-            <span class="bb-tier-name"><strong>Compra 2, llévate 1 gratis</strong> <span class="bb-supply">Para 3 meses</span><small>Kit 3 Frentes</small></span>
-            <span class="bb-tier-price"><strong>$599</strong></span>
+            <span class="bb-tier-name"><strong>Compra 4, llévate 4 gratis</strong> <span class="bb-supply">Para 8 meses</span><small>8 barras · $112 por barra</small></span>
+            <span class="bb-tier-price"><strong>$899</strong></span>
           </label>
           <label class="bb-tier is-popular">
             <span class="bb-pop">El más pedido</span>
-            <input type="radio" name="tier" value="duo" checked data-freq="cada mes" data-extra=" El Dúo te sale en $239.">
+            <input type="radio" name="tier" value="b5" checked data-extra=" El pack de 5 te sale en $519.">
             <span class="bb-radio" aria-hidden="true"></span>
-            <img class="bb-tier-img" src="{{ 'pc-l2-bundle-2.jpg' | asset_url }}" alt="">
-            <span class="bb-tier-name"><strong>Dúo</strong> <span class="bb-supply">Para 2 meses</span><small>La segunda barra te sale en $10 · precio de lanzamiento</small></span>
-            <span class="bb-tier-price"><strong>$299</strong></span>
+            <img class="bb-tier-img" src="{{ 'pc-l2-bundle-3.jpg' | asset_url }}" alt="">
+            <span class="bb-tier-name"><strong>Compra 3, llévate 2 gratis</strong> <span class="bb-supply">Para 5 meses</span><small>5 barras · te ahorras $846</small></span>
+            <span class="bb-tier-price"><strong>$649</strong></span>
           </label>
           <label class="bb-tier">
-            <input type="radio" name="tier" value="una" data-freq="cada mes" data-extra=" La barra te sale en $231.">
+            <input type="radio" name="tier" value="b3" data-extra=" El pack de 3 te sale en $359.">
             <span class="bb-radio" aria-hidden="true"></span>
-            <img class="bb-tier-img" src="{{ 'pc-l2-bundle-1.jpg' | asset_url }}" alt="">
-            <span class="bb-tier-name"><strong>1 barra</strong> <span class="bb-supply">Para 1 mes</span><small>Para probarla</small></span>
-            <span class="bb-tier-price"><strong>$289</strong></span>
+            <img class="bb-tier-img" src="{{ 'pc-l2-bundle-3.jpg' | asset_url }}" alt="">
+            <span class="bb-tier-name"><strong>Compra 2, llévate 1 gratis</strong> <span class="bb-supply">Para 3 meses</span><small>3 barras · para empezar</small></span>
+            <span class="bb-tier-price"><strong>$449</strong></span>
           </label>
         </div>
         <label class="bb-subscribe">
@@ -606,7 +606,7 @@ function bbFreq(){
   if(!sel)return;
   document.getElementById('bb-sub-freq').textContent='Te la reenviamos cada mes con 20% de descuento.'+(sel.dataset.extra||'')+' Cancelas en un clic, sin cargos sorpresa.';
 }
-var TIER_IDS={kit3:'40861322838145',duo:'40861322805377',una:'40861322772609'};
+var TIER_IDS={b8:'40861322772609',b5:'40861322805377',b3:'40861322838145'};
 var SELLING_PLANS={'40861322838145':12395675777,'40861322805377':12395675777,'40861322772609':12395675777};
 document.querySelectorAll('.bb-tier input').forEach(function(r){r.addEventListener('change',bbFreq);});
 bbFreq();
