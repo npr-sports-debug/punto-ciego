@@ -110,7 +110,10 @@ strong{font-weight:700;color:inherit}
 .tname{font-size:17px;line-height:1.3}
 .tname em{font-style:normal;display:inline-block;background:rgba(0,0,0,.07);border-radius:999px;padding:1px 9px;font-size:12px;font-weight:600;margin-left:6px;vertical-align:1px;color:var(--ink2)}
 .tname small{display:block;font-size:14px;color:var(--ink2);margin-top:3px}
-.tprice{font-size:20px;font-weight:700}
+.tprice{display:flex;flex-direction:column;align-items:flex-end;line-height:1.15;text-align:right}
+.tprice strong{font-size:20px;font-weight:700;white-space:nowrap}
+.tprice strong em{font-style:normal;font-size:12px;font-weight:700}
+.tprice small{font-size:12px;font-weight:600;color:var(--ink2);margin-top:2px;white-space:nowrap}
 .pop{position:absolute;top:-11px;right:14px;background:var(--brand);color:#fff;font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;padding:3px 10px;border-radius:4px}
 .dark-pop{background:var(--head)}
 .addon{position:relative;display:grid;grid-template-columns:auto 1fr;align-items:center;gap:12px;border:1.5px solid rgba(0,0,0,.18);border-radius:12px;padding:12px 16px;cursor:pointer;margin-bottom:10px}
@@ -185,7 +188,8 @@ details p{padding:0 0 16px}
   #bb-main{aspect-ratio:4/3}
   .bb-panel h2{font-size:26px}
   .tname{font-size:16px}
-  .tprice{font-size:18px}
+  .tprice strong{font-size:17px}
+  .tprice small{font-size:11px}
   .sticky.on{display:flex}
   body:has(.sticky.on) .closing{padding-bottom:96px}
 }
@@ -313,9 +317,9 @@ details p{padding:0 0 16px}
       <p class="bb-desc"><strong>Hecho para el olor que aparece después de los 40.</strong> Va por el aceite que tu jabón deja pasar. También en espalda, pecho y cuello. Cedro negro y ámbar, 120 g. El pack de 5 te sale en menos de 5 pesos al día.</p>
       <p class="bb-divider"><span>Compra más, ahorra más</span></p>
       <div class="tiers">
-        <label class="tier"><span class="pop dark-pop">Mejor precio</span><input type="radio" name="id" value="40861322772609" data-price="899" data-label="8 barras"><span class="radio"></span><img src="{{ 'pc3-bundle-3.jpg' | asset_url }}" alt="" width="56" height="56"><span class="tname"><strong>Compra 4, llévate 4 gratis</strong> <em>Para 8 meses</em><small>8 barras · $112 por barra</small></span><span class="tprice">$899</span></label>
-        <label class="tier"><span class="pop">El más pedido</span><input type="radio" name="id" value="40861322805377" checked data-price="649" data-label="5 barras"><span class="radio"></span><img src="{{ 'pc3-bundle-3.jpg' | asset_url }}" alt="" width="56" height="56"><span class="tname"><strong>Compra 3, llévate 2 gratis</strong> <em>Para 5 meses</em><small>5 barras · te ahorras $846</small></span><span class="tprice">$649</span></label>
-        <label class="tier"><input type="radio" name="id" value="40861322838145" data-price="449" data-label="3 barras"><span class="radio"></span><img src="{{ 'pc3-bundle-3.jpg' | asset_url }}" alt="" width="56" height="56"><span class="tname"><strong>Compra 2, llévate 1 gratis</strong> <em>Para 3 meses</em><small>3 barras · para empezar</small></span><span class="tprice">$449</span></label>
+        <label class="tier"><span class="pop dark-pop">Mejor precio</span><input type="radio" name="id" value="40861322772609" data-price="899" data-label="8 barras"><span class="radio"></span><img src="{{ 'pc3-bundle-3.jpg' | asset_url }}" alt="" width="56" height="56"><span class="tname"><strong>Compra 4, llévate 4 gratis</strong> <em>Para 8 meses</em><small>8 barras · te ahorras $1,493</small></span><span class="tprice"><strong>$112 <em>c/u</em></strong><small>$899 total</small></span></label>
+        <label class="tier"><span class="pop">El más pedido</span><input type="radio" name="id" value="40861322805377" checked data-price="649" data-label="5 barras"><span class="radio"></span><img src="{{ 'pc3-bundle-3.jpg' | asset_url }}" alt="" width="56" height="56"><span class="tname"><strong>Compra 3, llévate 2 gratis</strong> <em>Para 5 meses</em><small>5 barras · te ahorras $846</small></span><span class="tprice"><strong>$130 <em>c/u</em></strong><small>$649 total</small></span></label>
+        <label class="tier"><input type="radio" name="id" value="40861322838145" data-price="449" data-label="3 barras"><span class="radio"></span><img src="{{ 'pc3-bundle-3.jpg' | asset_url }}" alt="" width="56" height="56"><span class="tname"><strong>Compra 2, llévate 1 gratis</strong> <em>Para 3 meses</em><small>3 barras · para empezar</small></span><span class="tprice"><strong>$150 <em>c/u</em></strong><small>$449 total</small></span></label>
       </div>
       <label class="addon sub"><input type="checkbox" name="subscribe" value="1"><span class="check"></span><span><strong>Que el olor a viejito no vuelva porque se te acabó el jabón.</strong><small id="sub-freq">Te la reenviamos cada mes con 20% de descuento. Cancelas en un clic, sin cargos sorpresa.</small></span></label>
       <button class="btn big" type="submit" id="bb-cta">Agregar al carrito · $649</button>
